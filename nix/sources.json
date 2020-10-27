@@ -1,0 +1,86 @@
+{
+    "emacs-native-comp": {
+        "branch": "feature/native-comp",
+        "description": "Mirror of GNU Emacs",
+        "homepage": "http://www.gnu.org/software/emacs/",
+        "owner": "emacs-mirror",
+        "repo": "emacs",
+        "rev": "3be93390fb6680d1e0c3256af72c86635a9eb327",
+        "sha256": "0flmcx7d65fspaqbd4v0zk1h8y2r5gxdlx1xj9cywcgb6pl2n2qk",
+        "type": "tarball",
+        "url": "https://github.com/emacs-mirror/emacs/archive/3be93390fb6680d1e0c3256af72c86635a9eb327.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "7678979b3ca51bf557b6bbe2a5b8aa8c4082ff26",
+        "sha256": "0qm9g8wyi9n4n8dkpshjyp0c7pa9d65r5mi6dgv2famr9ba82a2a",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/7678979b3ca51bf557b6bbe2a5b8aa8c4082ff26.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "home-manager": {
+        "branch": "master",
+        "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
+        "homepage": "https://rycee.gitlab.io/home-manager/",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "dc5239b5cef1f52fbf9c136529954282ee717866",
+        "sha256": "008mymdaqm2ymv3w9hki1jg4kwyiji5g6cj15hvv5qgdh6ng09zr",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/home-manager/archive/dc5239b5cef1f52fbf9c136529954282ee717866.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "9d35b9e4837ab88517210b1701127612c260eccf",
+        "sha256": "0q50xhnm8g2yfyakrh0nly4swyygxpi0a8cb9gp65wcakcgvzvdh",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/9d35b9e4837ab88517210b1701127612c260eccf.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-528d35b": {
+        "branch": "528d35b",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "528d35bec0cb976a06cc0e8487c6e5136400b16b",
+        "sha256": "0j8mnzq2c0rrd1s8whs8vc5aj3v8kn85ifzkn1z77ihvxbj5cn7y",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/528d35bec0cb976a06cc0e8487c6e5136400b16b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-release-20.09": {
+        "branch": "release-20.09",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e3c3fb2109ea14b124b99be82d0d13e386a4227c",
+        "sha256": "0qyv17ci4hnbqnpkxq96hz9lx3lf1r81cbydb484726d4kl0xi3h",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/e3c3fb2109ea14b124b99be82d0d13e386a4227c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-unstable": {
+        "branch": "nixpkgs-unstable",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cfed29bfcb28259376713005d176a6f82951014a",
+        "sha256": "034m892hxygminkj326y7l3bp4xhx0v154jcmla7wdfqd23dk5xm",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/cfed29bfcb28259376713005d176a6f82951014a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
