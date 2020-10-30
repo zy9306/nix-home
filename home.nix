@@ -24,6 +24,9 @@ in
     nixpkgs.fzf
     nixpkgs.aria2
     nixpkgs.git
+    nixpkgs.gitAndTools.delta
+    nixpkgs.bfg-repo-cleaner  # https://rtyley.github.io/bfg-repo-cleaner/
+    nixpkgs.gitAndTools.git-filter-repo  # https://github.com/newren/git-filter-repo
     nixpkgs.curl
     nixpkgs.wget
     nixpkgs.htop
@@ -31,6 +34,15 @@ in
     nixpkgs.tealdeer  # tldr rust impl
     nixpkgs.starship
     nixpkgs.xclip
+    nixpkgs.gawk  # TODO replace awk
+    nixpkgs.coreutils-full
+
+    # (nixpkgs.universal-ctags (super: {
+    #   preInstall = ''
+    #     ${super.preInstall}
+    #     # TODO solve emacs ctags
+    #   '';
+    # }))
 
     # languages
     nixpkgs.nodejs-14_x

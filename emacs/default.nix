@@ -11,7 +11,7 @@ let
   };
 in
 {
-  emacsGcc = pkgs.emacsGcc;
+  emacsGcc = pkgs.emacsGcc;  # 28.0.50
   emacsGit = pkgs.emacsGit;
   emacsUnstable = pkgs.emacsUnstable;
 }
