@@ -39,6 +39,18 @@ curl -L https://nixos.org/nix/install | sh
 - 详细文档
 
     > https://docs.cachix.org/installation.html
+    
+## niv(用于锁定依赖)
+
+- `niv add NixOS/nixpkgs -n {名称} -b {分支名}`
+
+    `niv add NixOS/nixpkgs -n nixpkgs-unstable -b nixpkgs-unstable`
+
+- `niv add NixOS/nixpkgs -n {名称} -r {commitID}`
+
+    `niv add NixOS/nixpkgs -n nixpkgs-528d35b -r 528d35bec0cb976a06cc0e8487c6e5136400b16b`
+
+要查找某些包的旧版本存在于哪个 commit 可以使用,但并不一定全 https://lazamar.co.uk/nix-versions/
 
 
 ## 一些常用命令

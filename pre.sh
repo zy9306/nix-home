@@ -9,6 +9,9 @@ nix-env -iA cachix -f https://cachix.org/api/v1/install
 # set cache
 cachix use arcueid
 
+# install niv
+nix-env -iA nixpkgs.niv
+
 # install home-manager
 # nix-env -iA home-manager -f https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz
 

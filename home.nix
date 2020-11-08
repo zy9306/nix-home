@@ -1,8 +1,3 @@
-# https://lazamar.co.uk/nix-versions/
-# niv add NixOS/nixpkgs -n nixpkgs-unstable -b nixpkgs-unstable
-# niv add NixOS/nixpkgs -n nixpkgs-528d35b -r 528d35bec0cb976a06cc0e8487c6e5136400b16b
-
-
 let
   sources = import ./nix/sources.nix;
   nixpkgs = import sources."nixpkgs-release-20.09" {};
