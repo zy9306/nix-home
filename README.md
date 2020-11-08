@@ -1,5 +1,24 @@
 ![Build](https://github.com/zy9306/nix-home/workflows/Build/badge.svg)
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [nix environment](#nix-environment)
+    - [安装 nix](#安装-nix)
+    - [cachix](#cachix)
+    - [niv(用于锁定依赖)](#niv用于锁定依赖)
+    - [一些常用命令](#一些常用命令)
+        - [构建](#构建)
+        - [安装](#安装)
+        - [查询](#查询)
+        - [升级](#升级)
+        - [删除](#删除)
+        - [回滚](#回滚)
+        - [安装时解决冲突和优先级](#安装时解决冲突和优先级)
+
+<!-- markdown-toc end -->
+
+
 # nix environment
 
 ## 安装 nix
@@ -146,7 +165,9 @@ curl -L https://nixos.org/nix/install | sh
         
         - nix-env --set-flag active false firefox
         - nix-env --preserve-installed -i firefox-2.0.0.11
-        - nix-env -q firefox-2.0.0.11 (the enabled one) firefox-2.0.0.9 (the disabled one)
+        - nix-env -q
+
+          firefox-2.0.0.11 (the enabled one) firefox-2.0.0.9 (the disabled one)
     
     - `--set-flag priority`
         
