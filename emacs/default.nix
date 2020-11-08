@@ -11,7 +11,15 @@ let
   };
 in
 {
-  emacsGcc = pkgs.emacsGcc;  # 28.0.50
-  emacsGit = pkgs.emacsGit;
-  emacsUnstable = pkgs.emacsUnstable;
+  # rename ctags to ctags.emacs
+  # 28.0.50
+  emacsGcc = pkgs.emacsGcc.overrideAttrs (old: {
+    configureFlags = old.configureFlags ++ ["--program-transform-name='s/^ctags$/ctags.emacs/'"];
+  });
+  emacsGit = pkgs.emacsGit.overrideAttrs (old: {
+    configureFlags = old.configureFlags ++ ["--program-transform-name='s/^ctags$/ctags.emacs/'"];
+  });
+  emacsUnstable = pkgs.emacsUnstable.overrideAttrs (old: {
+    configureFlags = old.configureFlags ++ ["--program-transform-name='s/^ctags$/ctags.emacs/'"];
+  });
 }
