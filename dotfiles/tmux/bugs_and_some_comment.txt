@@ -1,0 +1,64 @@
+tmux3.0a长按右键可以弹出一些有用的菜单
+
+tmux2.9a双键，三击等是正常的
+
+gnome终端选中后还要按y才能复制，这个在3.0之前也是如此？应该是的
+
+先使用3.0a，要是有问题，退回2.9，2.8再试试
+
+# tmux3.0a 左键双击，三击无效了
+
+### 以下配置为双击选中并复制单词，三击选中并复制行，不用问题也不大，不过有空解决下看看 ###
+# Double LMB Select & Copy (Word)
+COPY_CMD="xclip -selection clipboard -i > /dev/null 2>&1 || pbcopy -in -sel primary > /dev/null 2>&1"
+bind-key -T copy-mode-vi DoubleClick1Pane \
+    select-pane \; \
+    send-keys -X select-word \; \
+    send-keys -X copy-pipe "$COPY_CMD"
+bind-key -n DoubleClick1Pane \
+    select-pane \; \
+    copy-mode -M \; \
+    send-keys -X select-word \; \
+    send-keys -X copy-pipe "$COPY_CMD"
+
+# Triple LMB Select & Copy (Line)
+bind-key -T copy-mode-vi TripleClick1Pane \
+    select-pane \; \
+    send-keys -X select-line \; \
+    send-keys -X copy-pipe "$COPY_CMD"
+bind-key -n TripleClick1Pane \
+    select-pane \; \
+    copy-mode -M \; \
+    send-keys -X select-line \; \
+    send-keys -X copy-pipe "$COPY_CMD"
+
+
+# ubuntu默认终端选中无法自动复制，可以所有gnome终端都有这问题，其它终端正常
+### 自动复制鼠标选中的内容，ubuntu默认终端无效，在其它终端如alacritty中，！！！不需要以下配置也能自动复制
+### 仅仅保留当做配置参考，基本无用
+# For vi copy mode bindings
+# bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -i"
+# For emacs copy mode bindings
+# bind-key -T copy-mode MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -i"
+
+
+
+# 选择复制后不退出copy-mode
+# https://github.com/tmux/tmux/issues/140
+# For users of the tmux-yank plugin, just need the following line:
+# set -g @yank_action 'copy-pipe' # or 'copy-pipe-and-cancel' for the default
+
+# if without tmux-yank
+# disable "release mouse drag to copy and exit copy-mode", ref: https://github.com/tmux/tmux/issues/140
+# unbind-key -T copy-mode-vi MouseDragEnd1Pane
+
+# since MouseDragEnd1Pane neither exit copy-mode nor clear selection now,
+# let single click do selection clearing for us.
+# bind-key -T copy-mode-vi MouseDown1Pane select-pane\; send-keys -X clear-selection
+
+# this line changes the default binding of MouseDrag1Pane, the only difference
+# is that we use `copy-mode -eM` instead of `copy-mode -M`, so that WheelDownPane
+# can trigger copy-mode to exit when copy-mode is entered by MouseDrag1Pane
+# bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" \"copy-mode -eM\" \"send-keys -M\"' 'copy-mode -eM'
+
+
