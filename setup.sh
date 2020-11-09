@@ -10,16 +10,17 @@ install_nix() {
     curl -L https://nixos.org/nix/install | sh
 }
 
-set_channel_mirror() {
-    echo ">>> set Nixpkgs channel mirror ..."
-    nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+set_channel() {
+    echo ">>> set Nixpkgs channel ..."
+    nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs-mirror
+    nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+    nix-channel --add https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz home-manager
     nix-channel --update
 }
 
 set_cachix_mirror() {
     echo ">>> set cachix mirror ..."
-    mkdir -p ~/.config/nix
-    echo "substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org/" >> ~/.config/nix/nix.conf
+    echo "echo substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org/ >> ~/.config/nix/nix.conf"
 }
 
 install_cachix() {
@@ -39,28 +40,13 @@ install_niv() {
 
 install_home_manager() {
     echo ">>> install home-manager ..."
-
-    # recommend
-    nix-channel --add https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz home-manager
-    nix-channel --update
-
-    # nix-env -iA home-manager -f https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz
-
     nix-shell '<home-manager>' -A install
 }
 
 set_all() {
     install_nix
-    set_channel_mirror
+    set_channel
     set_cachix_mirror
-    install_cachix
-    set_arcueid_cache
-    install_niv
-    install_home_manager
-}
-
-set_all_without_mirror() {
-    install_nix
     install_cachix
     set_arcueid_cache
     install_niv
@@ -69,22 +55,21 @@ set_all_without_mirror() {
 
 HELP="support command: \n \
     install_nix \n \
-    set_channel_mirror \n \
+    set_channel \n \
     set_cachix_mirror \n \
     install_cachix \n \
     set_arcueid_cache \n \
     install_niv \n \
     install_home_manager \n \
     \n \
-    set_all for exec above all \n \
-    set_all_without_mirror for exec without setting mirror"
+    set_all for exec above all"
 
 case "$1" in
     "install_nix")
         install_nix
         ;;
-    "set_channel_mirror")
-        set_channel_mirror
+    "set_channel")
+        set_channel
         ;;
     "set_cachix_mirror")
         set_cachix_mirror
@@ -103,9 +88,6 @@ case "$1" in
         ;;
     "set_all")
         set_all
-        ;;
-    "set_all_without_mirror")
-        set_all_without_mirror
         ;;
     *)
         echo -e $HELP
