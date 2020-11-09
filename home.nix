@@ -19,6 +19,7 @@ in
     nixpkgs.fzf
     nixpkgs.aria2
     nixpkgs.git
+    nixpkgs.git-lfs
     nixpkgs.gitAndTools.delta
     nixpkgs.bfg-repo-cleaner  # https://rtyley.github.io/bfg-repo-cleaner/
     nixpkgs.gitAndTools.git-filter-repo  # https://github.com/newren/git-filter-repo
