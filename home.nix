@@ -1,51 +1,46 @@
 let
-  sources = import ./nix/sources.nix;
-  nixpkgs = import sources."nixpkgs-release-20.09" {};
-  nixpkgs-unstable = import sources."nixpkgs-unstable" {};
-  nixpkgs-528d35b = import sources."nixpkgs-528d35b" {};
-
   cachedpkgs = import ./default.nix;
-
-  # buildin
-  pkgs = import <nixpkgs> {};
-in
-{
+in {
   home.packages = [
-    nixpkgs.tmux
-    nixpkgs.zsh
-    nixpkgs.unzip
-    nixpkgs.fd
-    nixpkgs.ripgrep
-    nixpkgs.bat
-    nixpkgs.exa
-    nixpkgs.fzf
-    nixpkgs.aria2
-    nixpkgs.git
-    nixpkgs.git-lfs
-    nixpkgs.gitAndTools.delta
-    nixpkgs.bfg-repo-cleaner  # https://rtyley.github.io/bfg-repo-cleaner/
-    nixpkgs.gitAndTools.git-filter-repo  # https://github.com/newren/git-filter-repo
-    nixpkgs.curl
-    nixpkgs.wget
-    nixpkgs.htop
-    nixpkgs.navi
-    nixpkgs.tealdeer  # tldr rust impl
-    nixpkgs.starship
-    nixpkgs.xclip
-    nixpkgs.gawk  # TODO replace awk
-    nixpkgs.coreutils-full
-    nixpkgs.universal-ctags
+    cachedpkgs.tmux
+    cachedpkgs.zsh
+    cachedpkgs.unzip
+    cachedpkgs.fd
+    cachedpkgs.ripgrep
+    cachedpkgs.bat
+    cachedpkgs.exa
+    cachedpkgs.fzf
+    cachedpkgs.aria2
+    cachedpkgs.git
+    cachedpkgs.git-lfs
+    cachedpkgs.gitAndTools_delta
+    # https://rtyley.github.io/bfg-repo-cleaner/
+    cachedpkgs.bfg-repo-cleaner
+    # https://github.com/newren/git-filter-repo
+    cachedpkgs.gitAndTools_git-filter-repo
+    cachedpkgs.curl
+    cachedpkgs.wget
+    cachedpkgs.htop
+    cachedpkgs.navi
+    # tldr rust impl
+    cachedpkgs.tealdeer
+    cachedpkgs.starship
+    cachedpkgs.xclip
+    cachedpkgs.gawk
+    cachedpkgs.coreutils-full
+    cachedpkgs.universal-ctags
 
     cachedpkgs.emacsGcc
 
-    # languages
-    nixpkgs.nodejs-14_x
-    nixpkgs.python37Full
-    nixpkgs.python37Packages.pip
-    # nixpkgs.go_1_14
-    nixpkgs.go  # go-1.15.2
+    cachedpkgs.nodejs-14_x
+    cachedpkgs.python37Full
+    cachedpkgs.python37Packages_pip
+    # cachedpkgs.go_1_14
+    cachedpkgs.go-1_15_2
 
-    nixpkgs-528d35b.alacritty  # 0.4.2
+    cachedpkgs.alacritty_0_4_2
+
+    cachedpkgs.nixfmt
   ];
 
   # Let Home Manager install and manage itself.
