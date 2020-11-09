@@ -4,6 +4,8 @@ let
   nixpkgs-unstable = import sources."nixpkgs-unstable" {};
   nixpkgs-528d35b = import sources."nixpkgs-528d35b" {};
 
+  cachedpkgs = import ./default.nix;
+
   # buildin
   pkgs = import <nixpkgs> {};
 in
@@ -32,13 +34,9 @@ in
     nixpkgs.xclip
     nixpkgs.gawk  # TODO replace awk
     nixpkgs.coreutils-full
+    nixpkgs.universal-ctags
 
-    # (nixpkgs.universal-ctags (super: {
-    #   preInstall = ''
-    #     ${super.preInstall}
-    #     # TODO solve emacs ctags
-    #   '';
-    # }))
+    cachedpkgs.emacsGcc
 
     # languages
     nixpkgs.nodejs-14_x
