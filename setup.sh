@@ -2,46 +2,54 @@
 
 set -e
 
-# 缓存可选,清华的镜像速度也不快
+style_normal='\033[0m'
+style_red='\033[31m'
+
+echo_red() {
+    echo -e "${style_red}$@${style_normal}"
+}
+
+# 清华的镜像速度也不快，缓存镜像似乎不起作用
 # https://mirrors.tuna.tsinghua.edu.cn/help/nix/
 
 install_nix() {
-    echo ">>> install nix ..."
+    echo_red ">>> install nix ..."
     curl -L https://nixos.org/nix/install | sh
 }
 
 set_channel() {
-    echo ">>> set Nixpkgs channel ..."
-    nix-channel --remove nixpkgs
-    nix-channel --remove home-manager
-    # nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+    echo_red ">>> set Nixpkgs channel ..."
+    # 官方 channel：https://nixos.org/channels/nixpkgs-unstable
+    # 注意：一定要保留 nixpkgs 这个 channel 名称，不要命名，否则 home-manager 会无法工作
     nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
-    nix-channel --add https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz home-manager
     nix-channel --update
 }
 
 set_cachix_mirror() {
-    echo ">>> set cachix mirror ..."
-    echo "echo substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org/ >> ~/.config/nix/nix.conf"
+    echo_red ">>> set cachix mirror ..."
+    echo_red "echo substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org/ >> ~/.config/nix/nix.conf"
 }
 
 install_cachix() {
-    echo ">>> install cachix ..."
+    echo_red ">>> install cachix ..."
     nix-env -iA cachix -f https://cachix.org/api/v1/install
 }
 
 set_arcueid_cache() {
-    echo ">>> set cache ..."
+    echo_red ">>> set cache ..."
     cachix use arcueid
 }
 
 install_niv() {
-    echo ">>> install niv ..."
+    echo_red ">>> install niv ..."
     nix-env -iA nixpkgs.niv
 }
 
 install_home_manager() {
-    echo ">>> install home-manager ..."
+    echo_red ">>> install home-manager ..."
+    # 注意，不要删除该 channel，不然 home-manager 会无法工作
+    nix-channel --add https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz home-manager
+    nix-channel --update
     nix-shell '<home-manager>' -A install
 }
 
