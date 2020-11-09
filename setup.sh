@@ -12,8 +12,10 @@ install_nix() {
 
 set_channel() {
     echo ">>> set Nixpkgs channel ..."
-    nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs-mirror
-    nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+    nix-channel --remove nixpkgs
+    nix-channel --remove home-manager
+    # nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+    nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
     nix-channel --add https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz home-manager
     nix-channel --update
 }
