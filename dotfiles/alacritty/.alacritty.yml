@@ -1,0 +1,23 @@
+key_bindings:
+  # Command -> Alt
+  - { key: F,           mods: Command,     chars: "\x1bf"                       }
+  - { key: B,           mods: Command,     chars: "\x1bb"                       }
+  - { key: D,           mods: Command,     chars: "\x1bd"                       }
+
+  - { key: K,           mods: Command,     chars: "\x1bk"                       }
+  - { key: J,           mods: Command,     chars: "\x1bj"                       }
+  - { key: H,           mods: Command,     chars: "\x1bh"                       }  # 有问题
+  - { key: L,           mods: Command,     chars: "\x1bl"                       }
+
+  - { key: Key1,        mods: Command,     chars: "\x1b1"                       }
+  - { key: Key2,        mods: Command,     chars: "\x1b2"                       }
+  - { key: Key3,        mods: Command,     chars: "\x1b3"                       }
+  - { key: Key4,        mods: Command,     chars: "\x1b4"                       }
+  - { key: Key5,        mods: Command,     chars: "\x1b5"                       }
+
+  - { key: Back,        mods: Alt,         chars: "\x1b\x7f"                    }
+  - { key: Back,        mods: Command,     chars: "\x1b\x7f"                    }
+
+  # TODO 修复mac中文输入法退格问题，尚不清楚linux下的行为
+  # https://github.com/alacritty/alacritty/issues/1606
+  - { key: Back,        action:  ReceiveChar}

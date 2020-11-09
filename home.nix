@@ -45,4 +45,12 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.file = {
+    ".alacritty.yml".source = ./dotfiles/alacritty/.alacritty.yml;
+
+    ".config/yapf/style".source = ./dotfiles/yapf/style;
+
+    ".pip/pip.conf".source = ./dotfiles/pip/pip.conf;
+  };
 }
