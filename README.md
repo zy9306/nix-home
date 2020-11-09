@@ -90,7 +90,7 @@ curl -L https://nixos.org/nix/install | sh
 
 ### 安装
 
-`nix-env -iA {pkg} -f {paths}`
+- `nix-env -iA {pkg} -f {paths}`
     
     从文件中安装一个包
     
@@ -101,6 +101,10 @@ curl -L https://nixos.org/nix/install | sh
 - `nix-env --install gcc-3.3.2`
 
 - `nix-env -i -A gcc40mips`
+
+- `nix-env -f ~/foo.nix -i '.*'`
+    
+    安装一个文件中的所有包
 
 - `nix-env -iA emacsGcc -f ./emacs --dry-run`
     
@@ -115,10 +119,6 @@ curl -L https://nixos.org/nix/install | sh
 - `nix-env -qa -f {paths}`
     
     查询 nix 文件中的包
-
-- `nix-env -f ~/foo.nix -i '.*'`
-    
-    安装一个文件中的所有包
 
 - `nix-env -q`
     
