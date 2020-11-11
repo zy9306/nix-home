@@ -46,11 +46,15 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # https://rycee.gitlab.io/home-manager/options.html#opt-home.file
+
   home.file = {
     ".alacritty.yml".source = ./dotfiles/alacritty/.alacritty.yml;
 
     ".config/yapf/style".source = ./dotfiles/yapf/style;
 
     ".pip/pip.conf".source = ./dotfiles/pip/pip.conf;
+
+    ".navi-cheat".source = ./dotfiles/navi-cheat;
   };
 }
