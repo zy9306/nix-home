@@ -6,7 +6,7 @@ let
   nixpkgs-unstable = import sources."nixpkgs-unstable" { };
   nixpkgs-528d35b = import sources."nixpkgs-528d35b" { };
 
-  emacs = import ./emacs;
+  emacs = import ./nix-emacs;
 
   pkgs = import <nixpkgs> { };
 in {
