@@ -38,13 +38,7 @@ in {
   gawk = nixpkgs.gawk;
   coreutils-full = nixpkgs.coreutils-full;
   universal-ctags = nixpkgs.universal-ctags;
-
-  global = (nixpkgs.global.overrideAttrs (super: {
-      postInstall = ''
-        ${super.postInstall}
-        cp $out/share/gtags/gtags.conf ~/.globalrc
-      '';
-    }));
+  global = nixpkgs.global;
 
   nodejs-14_x = nixpkgs.nodejs-14_x;
   python37Full = nixpkgs.python37Full;
