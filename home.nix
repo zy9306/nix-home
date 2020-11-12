@@ -29,6 +29,7 @@ in {
     cachedpkgs.gawk
     cachedpkgs.coreutils-full
     cachedpkgs.universal-ctags
+    cachedpkgs.global
 
     cachedpkgs.emacsGcc
 
