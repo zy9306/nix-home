@@ -97,6 +97,14 @@ else
 fi
 
 
+if [[ $(command_exists global) == true ]];then
+    export GTAGSLABEL='native-pygments'
+    export GTAGSCONF=~/.globalrc
+else
+    echo_red "gnu global is not installed"
+fi
+
+
 if [[ $(command_exists tldr) == true ]];then
     mkdir -p $HOME/.tealdeer_cache
     export TEALDEER_CACHE_DIR=$HOME/.tealdeer_cache
