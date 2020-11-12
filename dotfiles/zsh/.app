@@ -89,8 +89,9 @@ alias l='ls -l'
 
 
 if [[ $(command_exists navi) == true ]];then
-    alias nax="navi --path ~/Nutstore/linux/navi-cheat"
-    alias na="navi --path ~/Nutstore/linux/navi-cheat --print | pbcopy"
+    export NAVI_PATH=$HOME/.navi-cheat
+    alias nax="navi"
+    alias na="navi --print | pbcopy"
 else
     echo_red "navi is not installed, see: https://github.com/denisidoro/navi"
 fi
