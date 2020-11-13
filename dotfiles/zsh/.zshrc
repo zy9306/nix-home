@@ -1,3 +1,6 @@
+# init nix env
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+
 source $HOME/.shutils
 
 # common
@@ -79,8 +82,6 @@ fi
 # 因此等所有zsh配置都完成后再执行以下操作来避免相应问题
 source $HOME/.env
 source $HOME/.app
-
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
 if [[ "$HAS_STARSHIP" == true ]]; then
     export STARSHIP_CONFIG=~/.starship
