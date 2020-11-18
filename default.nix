@@ -8,11 +8,15 @@ let
 
   emacs = import ./nix-emacs;
 
+  extra = import ./extra.nix;
+
   pkgs = import <nixpkgs> { };
 in {
   emacsGcc = emacs.emacsGcc;
   emacsGit = emacs.emacsGit;
   emacsUnstable = emacs.emacsUnstable;
+
+  q = extra.q;
 
   tmux = nixpkgs.tmux;
   zsh = nixpkgs.zsh;

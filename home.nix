@@ -42,6 +42,8 @@ in {
     cachedpkgs.alacritty_0_4_2
 
     cachedpkgs.nixfmt
+
+    cachedpkgs.q
   ];
 
   # Let Home Manager install and manage itself.
