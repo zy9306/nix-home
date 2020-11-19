@@ -32,6 +32,7 @@ in {
   gitAndTools_delta = nixpkgs.gitAndTools.delta;
   bfg-repo-cleaner = nixpkgs.bfg-repo-cleaner;
   gitAndTools_git-filter-repo = nixpkgs.gitAndTools.git-filter-repo;
+  gitAndTools_pre-commit = nixpkgs.gitAndTools.pre-commit;
   curl = nixpkgs.curl;
   wget = nixpkgs.wget;
   htop = nixpkgs.htop;

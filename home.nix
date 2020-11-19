@@ -18,6 +18,7 @@ in {
     cachedpkgs.bfg-repo-cleaner
     # https://github.com/newren/git-filter-repo
     cachedpkgs.gitAndTools_git-filter-repo
+    cachedpkgs.gitAndTools_pre-commit
     cachedpkgs.curl
     cachedpkgs.wget
     cachedpkgs.htop
