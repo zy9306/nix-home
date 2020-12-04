@@ -40,8 +40,6 @@ in {
     # cachedpkgs.go_1_14
     cachedpkgs.go-1_15_2
 
-    cachedpkgs.python-language-server
-
     cachedpkgs.alacritty_0_4_2
 
     cachedpkgs.nixfmt

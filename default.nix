@@ -51,17 +51,6 @@ in {
   go_1_14 = nixpkgs.go_1_14;
   go-1_15_2 = nixpkgs.go;
 
-  python-language-server = (nixpkgs.python-language-server.overrideAttrs
-    (super: {
-      meta = with nixpkgs.stdenv.lib; {
-        description = "Microsoft Language Server for Python";
-        homepage = "https://github.com/microsoft/python-language-server";
-        license = licenses.asl20;
-        maintainers = with maintainers; [ thomasjm ];
-        platforms = [ "x86_64-linux" "x86_64-darwin" ];
-      };
-    }));
-
   nixfmt = nixpkgs.nixfmt;
 
   alacritty_0_4_2 = nixpkgs-528d35b.alacritty;
