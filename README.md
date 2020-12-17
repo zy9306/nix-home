@@ -58,7 +58,7 @@ curl -L https://nixos.org/nix/install | sh
 - 详细文档
 
     > https://docs.cachix.org/installation.html
-    
+
 ## niv(用于锁定依赖)
 
 - `niv add NixOS/nixpkgs -n {名称} -b {分支名}`
@@ -74,28 +74,52 @@ curl -L https://nixos.org/nix/install | sh
 
 ## 一些常用命令
 
+### nix-shell 使用
+
+可用于启用一个含指定 pkg 的 shell 环境或构造一个含相应编译依赖的环境。
+
+```
+nix-shell \
+    [--arg name value] \
+    [--argstr name value] \
+    [ { --attr | -A } attrPath ] \
+    [--command cmd] [--run cmd] \
+    [--exclude regexp] \
+    [--pure] \
+    [--keep name] \
+    { { --packages | -p } packages... | [path]}
+```
+
+- `nix-shell '<nixpkgs>' -p <pkg>`
+
+    将启动一个 shell，该 shell 中包含 pkg。pkg 为 nixpkgs 中的属性名，可由 nix-env 查询得到。
+
+- `nix-shell '<nixpkgs>' -p <pkg> --pure`
+
+    --pure 的作用为不继承宿主机环境
+
 ### 构建
 
 - `nix-build -A {attrPath} {paths}`
-    
+
     构建一个包
-    
+
     attrPath 为 nix 文件中定义的属性名/包名 paths 为 nix 文件路径
-    
+
     nix-build 不加参数会构建所有属性
-    
+
         nix-build -A emacsGcc ./emacs/default.nix
-    
+
         nix-build --dry-run
 
 ### 安装
 
 - `nix-env -iA {pkg} -f {paths}`
-    
+
     从文件中安装一个包
-    
+
     pkg 为 nix 文件中定义的属性名/包名 paths 为 nix 文件路径，或者 url
-    
+
         nix-env -iA emacsGcc -f ./emacs
 
 - `nix-env --install gcc-3.3.2`
@@ -103,45 +127,45 @@ curl -L https://nixos.org/nix/install | sh
 - `nix-env -i -A gcc40mips`
 
 - `nix-env -f ~/foo.nix -i '.*'`
-    
+
     安装一个文件中的所有包
 
 - `nix-env -iA emacsGcc -f ./emacs --dry-run`
-    
+
     不实际安装，仅查看安装内容
 
 ### 查询
 
 - `nix-env -qaP {pkg}`
-    
+
     查询 pkg , 支持通配符
 
 - `nix-env -qa -f {paths}`
-    
+
     查询 nix 文件中的包
 
 - `nix-env -q`
-    
+
     To show installed packages
 
 - `nix-env -qa '.*(firefox|chromium).*'`
-    
+
     To show all packages with “firefox” or “chromium” in the name
 
 ### 升级
 
 - `nix-env --upgrade gcc`
-    
+
     升级
 
 ### 删除
 
 - `nix-env --uninstall gcc`
-    
+
     删除
 
 - `nix-env -e '.*'`
-    
+
     remove everything
 
 ### 回滚
@@ -149,26 +173,26 @@ curl -L https://nixos.org/nix/install | sh
 - `nix-env --list-generations`
 
 - `nix-env --rollback {generation}`
-    
+
     配合 --list-generations 使用
 
 ### 安装时解决冲突和优先级
 
 - `--set-flag`
     - `nix-env --set-flag keep true firefox`
-        
+
         nix-env -u 里不会更新 firefox
-    
+
     - `--preserve-installed`
-        
+
         保留旧版本 firefox 配置文件的情况下安装新的 firefox
-        
+
         - nix-env --set-flag active false firefox
         - nix-env --preserve-installed -i firefox-2.0.0.11
         - nix-env -q
 
           firefox-2.0.0.11 (the enabled one) firefox-2.0.0.9 (the disabled one)
-    
+
     - `--set-flag priority`
-        
+
         设置优先级，priority 越小优先级越高 nix-env --set-flag priority {priority} gcc
