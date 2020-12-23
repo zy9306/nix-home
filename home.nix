@@ -31,6 +31,7 @@ in {
     cachedpkgs.coreutils-full
     cachedpkgs.universal-ctags
     cachedpkgs.global
+    cachedpkgs.cloc
 
     cachedpkgs.emacsGcc
 

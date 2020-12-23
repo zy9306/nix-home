@@ -44,6 +44,7 @@ in {
   coreutils-full = nixpkgs.coreutils-full;
   universal-ctags = nixpkgs.universal-ctags;
   global = nixpkgs.global;
+  cloc = nixpkgs.cloc;
 
   nodejs-14_x = nixpkgs.nodejs-14_x;
   python37Full = nixpkgs.python37Full;
