@@ -13,6 +13,9 @@ let
   pkgs = import <nixpkgs> { };
 in {
   emacsGcc = emacs.emacsGcc;
+  emacsGcc20201217 = emacs.emacsGcc20201217;
+  emacsGcc20201017 = emacs.emacsGcc20201017;
+
   emacsGit = emacs.emacsGit;
   emacsUnstable = emacs.emacsUnstable;
 

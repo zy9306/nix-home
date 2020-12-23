@@ -23,6 +23,30 @@
         "url": "https://github.com/nix-community/emacs-overlay/archive/001083a8a3b2e59758fd6ddf4842bce341a372d6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "emacs-overlay-emacs-gcc-20201217": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "001083a8a3b2e59758fd6ddf4842bce341a372d6",
+        "sha256": "0xcdifclkqxz5m9hydhc17zmzycnhi7cnwvwyas5jd58gpaa9gs9",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/001083a8a3b2e59758fd6ddf4842bce341a372d6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "emacs-overlay-emacs-gcc-20201017": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "7678979b3ca51bf557b6bbe2a5b8aa8c4082ff26",
+        "sha256": "0qm9g8wyi9n4n8dkpshjyp0c7pa9d65r5mi6dgv2famr9ba82a2a",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/7678979b3ca51bf557b6bbe2a5b8aa8c4082ff26.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix  [maintainer=@rycee] ",

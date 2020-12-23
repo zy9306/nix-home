@@ -2,6 +2,8 @@ let
   cachedpkgs = import ./default.nix;
 in {
   home.packages = [
+    cachedpkgs.emacsGcc20201217
+
     cachedpkgs.tmux
     cachedpkgs.zsh
     cachedpkgs.unzip
@@ -32,8 +34,6 @@ in {
     cachedpkgs.universal-ctags
     cachedpkgs.global
     cachedpkgs.cloc
-
-    cachedpkgs.emacsGcc
 
     cachedpkgs.nodejs-14_x
     cachedpkgs.python37Full
