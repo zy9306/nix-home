@@ -60,8 +60,9 @@ in {
 
     ".pip/pip.conf".source = ./dotfiles/pip/pip.conf;
 
-    ".navi-cheat".source = ./dotfiles/navi-cheat;
-
     ".globalrc".source = ./dotfiles/gtags/.globalrc;
+
+    # private file
+    ".navi-cheat".source = ./private/navi-cheat/navi-cheat;
   };
 }
