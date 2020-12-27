@@ -21,6 +21,20 @@
 
 # nix environment
 
+`git clone --recurse-submodules git@github.com:zy9306/nix-home.git`
+
+or
+
+`git clone --recursive git://github.com/foo/bar.git` with version 1.9 of Git up until version 2.12.
+
+or 
+
+```
+git clone git@github.com:zy9306/nix-home.git
+cd private
+git submodule update --init --recursive
+```
+
 ## 安装 nix
 
 > https://nixos.org/download.html#nix-quick-install
