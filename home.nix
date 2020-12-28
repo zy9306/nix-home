@@ -62,7 +62,8 @@ in {
 
     ".globalrc".source = ./dotfiles/gtags/.globalrc;
 
-    # private file
-    ".navi-cheat".source = ./private/navi-cheat/default.cheat;
+    # private
+    # NOTE: .navi-cheat is a directory.
+    ".navi-cheat".source = ./private/navi-cheat;
   };
 }
