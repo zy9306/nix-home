@@ -4,6 +4,8 @@ in {
   home.packages = [
     cachedpkgs.emacs
 
+    cachedpkgs.pandoc
+
     cachedpkgs.tmux
     cachedpkgs.zsh
     cachedpkgs.unzip

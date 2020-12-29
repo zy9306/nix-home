@@ -28,6 +28,8 @@ in {
 
   q = extra.q;
 
+  pandoc = nixpkgs.pandoc;
+
   tmux = nixpkgs.tmux;
   zsh = nixpkgs.zsh;
   unzip = nixpkgs.unzip;
