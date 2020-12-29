@@ -60,7 +60,7 @@ in {
   python37Full = nixpkgs.python37Full;
   python37Packages_pip = nixpkgs.python37Packages.pip;
   go_1_14 = nixpkgs.go_1_14;
-  go-1_15_2 = nixpkgs.go;
+  go-1_15 = nixpkgs.go;
 
   nixfmt = nixpkgs.nixfmt;
 

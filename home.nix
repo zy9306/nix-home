@@ -39,7 +39,7 @@ in {
     cachedpkgs.python37Full
     cachedpkgs.python37Packages_pip
     # cachedpkgs.go_1_14
-    cachedpkgs.go-1_15_2
+    cachedpkgs.go-1_15
 
     cachedpkgs.alacritty_0_4_2
 
