@@ -12,14 +12,17 @@ let
 
   pkgs = import <nixpkgs> { };
 in {
+  # 27 正式版
+  emacs = nixpkgs.emacs;
+
   emacsGcc = emacs.emacsGcc;
   emacsGcc20201217 = emacs.emacsGcc20201217;
   emacsGcc20201017 = emacs.emacsGcc20201017;
 
   emacsPgtkGcc20201213 = emacs.emacsPgtkGcc20201213;
-  
+
   emacsPgtk20201122 = emacs.emacsPgtk20201122;
-  
+
   emacsGit = emacs.emacsGit;
   emacsUnstable = emacs.emacsUnstable;
 

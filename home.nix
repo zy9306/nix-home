@@ -2,7 +2,7 @@ let
   cachedpkgs = import ./default.nix;
 in {
   home.packages = [
-    cachedpkgs.emacsPgtkGcc20201213
+    cachedpkgs.emacs
 
     cachedpkgs.tmux
     cachedpkgs.zsh
