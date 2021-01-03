@@ -139,7 +139,7 @@ nix-shell \
 
 - `nix-env --install gcc-3.3.2`
 
-- `nix-env -i -A gcc40mips`
+- `nix-env -i -A nixpkgs.docker`
 
 - `nix-env -f ~/foo.nix -i '.*'`
 
