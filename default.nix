@@ -64,8 +64,6 @@ in {
   go_1_14 = nixpkgs.go_1_14;
   go-1_15 = nixpkgs.go;
 
-  docker = nixpkgs.docker;
-
   nixfmt = nixpkgs.nixfmt;
 
   alacritty_0_4_2 = nixpkgs-528d35b.alacritty;
