@@ -1,0 +1,221 @@
+#+OPTIONS: ^:{}
+#+OPTIONS: -:nil
+
+
+* Usage
+
+#+begin_src shell
+git clone --recurse-submodules git@github.com:zy9306/nix-home.git
+
+# or with version 1.9 of Git up until version 2.12
+git clone --recursive git://github.com/foo/bar.git
+
+# or
+git clone git@github.com:zy9306/nix-home.git
+cd private
+git submodule update --init --recursivegit clone git@github.com:zy9306/nix-home.git
+cd private
+git submodule update --init --recursive
+#+end_src
+
+* Install Nix
+
+#+begin_quote
+https://nixos.org/download.html#nix-quick-install
+#+end_quote
+
+#+begin_src shell
+# 注意：必须以非 `root` 用户安装注意：必须以非 `root` 用户安装
+curl -L https://nixos.org/nix/install | sh
+#+end_src
+
+* Mirrors
+#+begin_quote
+https://mirrors.tuna.tsinghua.edu.cn/help/nix/
+#+end_quote
+
+** 缓存镜像
+
+~/.config/nix/nix.conf 中增加镜像源，substituters 中可能有多项，将清华
+的源放在第一个，如：
+#+begin_src 
+substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org https://arcueid.cachix.org
+#+end_src
+
+** channel 镜像
+
+#+begin_src shell
+# 官方 channel：https://nixos.org/channels/nixpkgs-unstable
+# 注意：一定要保留 nixpkgs 这个 channel 名称，不要命名，否则 home-manager 会无法工作
+nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+nix-channel --update
+#+end_src
+
+* Install Cachix
+
+安装
+#+begin_src shell
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+#+end_src
+
+使用
+#+begin_src shell
+cachix use arcueid
+#+end_src
+
+** 其它配置（只是使用可忽略该部分）
+
+#+begin_quote
+https://app.cachix.org/cache/arcueid
+#+end_quote
+
+其中 arcueid 为创建 cache 时填写的名字
+
+配置和使用分别参考 ~Push binaries~ 和 ~Pull binaries~
+
+如果是私有仓库, 使用时需要 ~cachix authtoken {your authtoken}~
+
+Github CI 配置
+#+begin_quote
+https://nix.dev/tutorials/continuous-integration-github-actions.html
+#+end_quote
+
+其它 CI 配置
+#+begin_quote
+https://docs.cachix.org/continuous-integration-setup/index.html
+#+end_quote
+
+详细文档
+#+begin_quote
+https://docs.cachix.org/installation.html
+#+end_quote
+
+* Install Niv (Optional)
+
+Install
+#+begin_src shell
+nix-env -iA nixpkgs.niv
+#+end_src
+
+Usage
+#+begin_src shell
+# niv add NixOS/nixpkgs -n {名称} -b {分支名}
+niv add NixOS/nixpkgs -n nixpkgs-unstable -b nixpkgs-unstable
+
+# niv add NixOS/nixpkgs -n {名称} -r {commitID}
+niv add NixOS/nixpkgs -n nixpkgs-528d35b -r 528d35bec0cb976a06cc0e8487c6e5136400b16b
+#+end_src
+
+Tips:
+
+要查找某些包的旧版本存在于哪个 commit 可以使用,但并不一定全
+https://lazamar.co.uk/nix-versions/
+
+* nix-shell
+
+可用于启用一个含指定 pkg 的 shell 环境或构造一个含相应编译依赖的环境。
+
+Summary
+#+begin_src shell
+nix-shell \
+    [--arg name value] \
+    [--argstr name value] \
+    [ { --attr | -A } attrPath ] \
+    [--command cmd] [--run cmd] \
+    [--exclude regexp] \
+    [--pure] \
+    [--keep name] \
+    { { --packages | -p } packages... | [path]}
+#+end_src
+
+
+#+begin_src shell
+# 启动一个包含 pkg 的 shell，pkg 为 nixpkgs 中的属性名。
+nix-shell '<nixpkgs>' -p <pkg>
+
+# --pure 的作用为不继承宿主机环境
+nix-shell '<nixpkgs>' -p <pkg> --pure
+#+end_src
+
+* nix-build
+
+#+begin_src shell
+# nix-build -A {attrPath} {paths}
+# attrPath 为 nix 文件中定义的属性名/包名 paths 为 nix 文件路径
+nix-build -A emacsGcc ./emacs/default.nix
+
+# 不加参数会构建所有属性
+nix-build --dry-run
+#+end_src
+
+* nix-env
+
+** install
+
+#+begin_src shell
+# pkg 为 nix 文件中定义的属性名/包名 paths 为 nix 文件路径，或者 url
+nix-env -iA {pkg} -f {paths}
+
+nix-env -iA nixpkgs.docker
+
+# 安装一个文件中的所有包
+nix-env -f ~/foo.nix -i '.*'
+
+# --dry-run 不实际安装，仅查看安装内容
+nix-env -iA emacsGcc -f ./emacs --dry-run
+#+end_src
+
+
+** query
+
+#+begin_src shell
+# 查询 pkg , 支持通配符
+nix-env -qaP {pkg}
+
+# 查询 nix 文件中的包
+nix-env -qa -f {paths}
+
+# To show installed packages
+nix-env -q
+
+# To show all packages with “firefox” or “chromium” in the name
+nix-env -qa '.*(firefox|chromium).*'
+#+end_src
+
+** update
+
+#+begin_src shell
+nix-env --upgrade gcc
+#+end_src
+
+** delete
+
+#+begin_src shell
+nix-env --uninstall gcc
+
+# remove everything
+nix-env -e '.*'
+#+end_src
+
+** rollback
+
+#+begin_src shell
+nix-env --list-generations
+nix-env --rollback {generation}
+#+end_src
+
+** conflict
+
+#+begin_src shell
+# nix-env -u 里不会更新 firefox
+nix-env --set-flag keep true firefox
+
+# 保留旧版本 firefox 配置文件的情况下安装新的 firefox
+# firefox-2.0.0.11 (the enabled one) firefox-2.0.0.9 (the disabled one)
+nix-env --set-flag active false firefox
+nix-env --preserve-installed -i firefox-2.0.0.11
+nix-env -q
+
+# 设置优先级，priority 越小优先级越高
+nix-env --set-flag priority {priority} gcc
+#+end_src
