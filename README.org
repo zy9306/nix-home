@@ -1,6 +1,28 @@
 #+OPTIONS: ^:{}
 #+OPTIONS: -:nil
 
+[[https://github.com/zy9306/nix-home/workflows/Build/badge.svg?branch=master]]
+
+* Table of Contents                                                     :TOC:QUOTE:
+#+BEGIN_QUOTE
+- [[#usage][Usage]]
+- [[#install-nix][Install Nix]]
+- [[#mirrors][Mirrors]]
+  - [[#缓存镜像][缓存镜像]]
+  - [[#channel-镜像][channel 镜像]]
+- [[#install-cachix][Install Cachix]]
+  - [[#其它配置只是使用可忽略该部分][其它配置（只是使用可忽略该部分）]]
+- [[#install-niv-optional][Install Niv (Optional)]]
+- [[#nix-shell][nix-shell]]
+- [[#nix-build][nix-build]]
+- [[#nix-env][nix-env]]
+  - [[#install][install]]
+  - [[#query][query]]
+  - [[#update][update]]
+  - [[#delete][delete]]
+  - [[#rollback][rollback]]
+  - [[#conflict][conflict]]
+#+END_QUOTE
 
 * Usage
 
