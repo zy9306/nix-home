@@ -52,6 +52,7 @@ in {
   curl = nixpkgs.curl;
   wget = nixpkgs.wget;
   aria2 = nixpkgs.aria2;
+  proxychains-ng = extra.proxychains-ng;
 
   # language
   nodejs-14 = nixpkgs.nodejs-14_x;
