@@ -1,53 +1,57 @@
-let
-  cachedpkgs = import ./default.nix;
+let cachedpkgs = import ./default.nix;
 in {
   home.packages = [
-    cachedpkgs.emacs
-
-    cachedpkgs.pandoc
-
+    # shell
+    cachedpkgs.alacritty_0_4_2
     cachedpkgs.tmux
     cachedpkgs.zsh
-    cachedpkgs.unzip
-    cachedpkgs.fd
-    cachedpkgs.ripgrep
-    cachedpkgs.bat
-    cachedpkgs.exa
-    cachedpkgs.fzf
-    cachedpkgs.aria2
-    cachedpkgs.git
-    cachedpkgs.git-lfs
-    cachedpkgs.gitAndTools_delta
-    # https://rtyley.github.io/bfg-repo-cleaner/
-    cachedpkgs.bfg-repo-cleaner
-    # https://github.com/newren/git-filter-repo
-    cachedpkgs.gitAndTools_git-filter-repo
-    cachedpkgs.gitAndTools_pre-commit
-    cachedpkgs.curl
-    cachedpkgs.wget
-    cachedpkgs.htop
-    cachedpkgs.navi
-    # tldr rust impl
-    cachedpkgs.tealdeer
     cachedpkgs.starship
+
+    # search
+    cachedpkgs.rg
+    cachedpkgs.fd
+    cachedpkgs.fzf
+
+    # utils
+    cachedpkgs.unzip
+    cachedpkgs.htop
     cachedpkgs.xclip
     cachedpkgs.gawk
     cachedpkgs.coreutils-full
     cachedpkgs.universal-ctags
     cachedpkgs.global
     cachedpkgs.cloc
+    cachedpkgs.pandoc
+    cachedpkgs.bat
+    cachedpkgs.exa
+    cachedpkgs.navi
+    cachedpkgs.tealdeer
 
-    cachedpkgs.nodejs-14_x
-    cachedpkgs.python37Full
-    cachedpkgs.python37Packages_pip
-    # cachedpkgs.go_1_14
+    # git
+    cachedpkgs.git
+    cachedpkgs.git-lfs
+    cachedpkgs.delta
+    cachedpkgs.bfg
+    cachedpkgs.git-filter-repo
+    cachedpkgs.pre-commit
+
+    # network
+    cachedpkgs.curl
+    cachedpkgs.wget
+    cachedpkgs.aria2
+
+    # language
+    cachedpkgs.nodejs-14
+    cachedpkgs.python37
+    cachedpkgs.python37Pip
     cachedpkgs.go-1_15
 
-    cachedpkgs.alacritty_0_4_2
-
+    # extra
     cachedpkgs.nixfmt
-
     cachedpkgs.q
+
+    # emacs
+    cachedpkgs.emacs
   ];
 
   # Let Home Manager install and manage itself.

@@ -9,9 +9,6 @@ echo_red() {
     echo -e "${style_red}$@${style_normal}"
 }
 
-# 清华的镜像速度也不快，缓存镜像似乎不起作用
-# https://mirrors.tuna.tsinghua.edu.cn/help/nix/
-
 install_nix() {
     echo_red ">>> install nix ..."
     curl -L https://nixos.org/nix/install | sh

@@ -12,59 +12,66 @@ let
 
   pkgs = import <nixpkgs> { };
 in {
-  # 27 正式版
-  emacs = nixpkgs.emacs;
-
-  emacsGcc = emacs.emacsGcc;
-  emacsGcc20201217 = emacs.emacsGcc20201217;
-  emacsGcc20201017 = emacs.emacsGcc20201017;
-
-  emacsPgtkGcc20201213 = emacs.emacsPgtkGcc20201213;
-
-  emacsPgtk20201122 = emacs.emacsPgtk20201122;
-
-  emacsGit = emacs.emacsGit;
-  emacsUnstable = emacs.emacsUnstable;
-
-  q = extra.q;
-
-  pandoc = nixpkgs.pandoc;
-
+  # shell
+  alacritty_0_4_2 = nixpkgs-528d35b.alacritty;
   tmux = nixpkgs.tmux;
   zsh = nixpkgs.zsh;
-  unzip = nixpkgs.unzip;
-  fd = nixpkgs.fd;
-  ripgrep = nixpkgs.ripgrep;
-  bat = nixpkgs.bat;
-  exa = nixpkgs.exa;
-  fzf = nixpkgs.fzf;
-  aria2 = nixpkgs.aria2;
-  git = nixpkgs.git;
-  git-lfs = nixpkgs.git-lfs;
-  gitAndTools_delta = nixpkgs.gitAndTools.delta;
-  bfg-repo-cleaner = nixpkgs.bfg-repo-cleaner;
-  gitAndTools_git-filter-repo = nixpkgs.gitAndTools.git-filter-repo;
-  gitAndTools_pre-commit = nixpkgs.gitAndTools.pre-commit;
-  curl = nixpkgs.curl;
-  wget = nixpkgs.wget;
-  htop = nixpkgs.htop;
-  navi = nixpkgs.navi;
-  tealdeer = nixpkgs.tealdeer;
   starship = nixpkgs.starship;
+
+  # search
+  rg = nixpkgs.ripgrep;
+  fd = nixpkgs.fd;
+  fzf = nixpkgs.fzf;
+
+  # utils
+  unzip = nixpkgs.unzip;
+  htop = nixpkgs.htop;
   xclip = nixpkgs.xclip;
   gawk = nixpkgs.gawk;
   coreutils-full = nixpkgs.coreutils-full;
   universal-ctags = nixpkgs.universal-ctags;
   global = nixpkgs.global;
   cloc = nixpkgs.cloc;
+  pandoc = nixpkgs.pandoc;
+  bat = nixpkgs.bat;
+  exa = nixpkgs.exa;
+  navi = nixpkgs.navi;
+  tealdeer = nixpkgs.tealdeer;
 
-  nodejs-14_x = nixpkgs.nodejs-14_x;
-  python37Full = nixpkgs.python37Full;
-  python37Packages_pip = nixpkgs.python37Packages.pip;
+  # git
+  git = nixpkgs.git;
+  git-lfs = nixpkgs.git-lfs;
+  delta = nixpkgs.gitAndTools.delta;
+  # https://rtyley.github.io/bfg-repo-cleaner/
+  bfg = nixpkgs.bfg-repo-cleaner;
+  # https://github.com/newren/git-filter-repo
+  git-filter-repo = nixpkgs.gitAndTools.git-filter-repo;
+  pre-commit = nixpkgs.gitAndTools.pre-commit;
+
+  # network
+  curl = nixpkgs.curl;
+  wget = nixpkgs.wget;
+  aria2 = nixpkgs.aria2;
+
+  # language
+  nodejs-14 = nixpkgs.nodejs-14_x;
+  python37 = nixpkgs.python37Full;
+  python37Pip = nixpkgs.python37Packages.pip;
   go_1_14 = nixpkgs.go_1_14;
   go-1_15 = nixpkgs.go;
 
-  nixfmt = nixpkgs.nixfmt;
+  # emacs
+  # 27
+  emacs = nixpkgs.emacs;
+  # gcc
+  emacsGcc = emacs.emacsGcc;
+  emacsGcc20201217 = emacs.emacsGcc20201217;
+  emacsGcc20201017 = emacs.emacsGcc20201017;
+  # dev
+  emacsGit = emacs.emacsGit;
+  emacsUnstable = emacs.emacsUnstable;
 
-  alacritty_0_4_2 = nixpkgs-528d35b.alacritty;
+  # extra
+  q = extra.q;
+  nixfmt = nixpkgs.nixfmt;
 }
