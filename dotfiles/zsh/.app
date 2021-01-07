@@ -110,8 +110,8 @@ else
     echo_red "run tldr --update or download https://github.com/tldr-pages/tldr to $HOME/.tealdeer_cache/tldr-master"
 fi
 
-if [[ $(command_exists proxychains) == true ]];then
-    alias pc="proxychains"
+if [[ $(command_exists proxychains4) == true ]];then
+    alias pc="proxychains4"
 fi
 
 e() {
