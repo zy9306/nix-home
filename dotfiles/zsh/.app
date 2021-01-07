@@ -1,6 +1,4 @@
 # bat config
-
-
 if [[ $(command_exists bat) == true ]];then
     export BAT_THEME="zenburn"  # use GitHub for white theme.
     alias cat="bat -p"
@@ -112,6 +110,9 @@ else
     echo_red "run tldr --update or download https://github.com/tldr-pages/tldr to $HOME/.tealdeer_cache/tldr-master"
 fi
 
+if [[ $(command_exists proxychains) == true ]];then
+    alias pc="proxychains"
+fi
 
 e() {
     emacs $@ &
