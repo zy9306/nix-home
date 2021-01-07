@@ -67,7 +67,7 @@ zplug load
 if zplug check b4b4r07/enhancd; then
     # setting if enhancd is available
     export ENHANCD_AWK=awk
-    if [ -f /usr/local/bin/fzf ];then
+    if [[ $(command_exists fzf) == true ]];then
         ENHANCD_FILTER=fzf:fzy:peco:non-existing-filter
         export ENHANCD_FILTER
     else

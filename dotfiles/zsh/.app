@@ -20,7 +20,7 @@ if [[ $(command_exists fzf) == true ]];then
     export FZF_DEFAULT_OPTS="--bind ctrl-f:page-down,ctrl-b:page-up --height=50% --no-sort --layout=reverse"
     # --preview='bat --style=full --color=always --theme=GitHub {} 2> /dev/null'
 
-    if [ -f /usr/local/bin/fd ];then
+    if [[ $(command_exists fd) == true ]];then
         export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
     else
         echo_red ".app: fzf may need fd for FZF_DEFAULT_COMMAND"
@@ -48,9 +48,7 @@ fi
 #     do something
 # fi
 
-if [[ $(command_exists thefuck) == false ]]; then
-    echo_red "thefuck is not installed see: https://github.com/nvbn/thefuck"
-else
+if [[ $(command_exists thefuck) == true ]]; then
     eval $(thefuck --alias)
 fi
 
