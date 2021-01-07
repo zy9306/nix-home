@@ -43,8 +43,9 @@ in {
 
     # language
     cachedpkgs.nodejs-14
+    # install pip
+    # curl https://bootstrap.pypa.io/get-pip.py | python3.7
     cachedpkgs.python37
-    cachedpkgs.python37Pip
     cachedpkgs.go-1_15
 
     # extra

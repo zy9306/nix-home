@@ -57,7 +57,6 @@ in {
   # language
   nodejs-14 = nixpkgs.nodejs-14_x;
   python37 = nixpkgs.python37Full;
-  python37Pip = nixpkgs.python37Packages.pip;
   go_1_14 = nixpkgs.go_1_14;
   go-1_15 = nixpkgs.go;
 
