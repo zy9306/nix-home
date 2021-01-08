@@ -39,7 +39,6 @@ in {
     cachedpkgs.curl
     cachedpkgs.wget
     cachedpkgs.aria2
-    cachedpkgs.proxychains-ng
 
     # language
     cachedpkgs.nodejs-14
