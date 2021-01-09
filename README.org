@@ -5,6 +5,7 @@
 
 * Table of Contents                                                     :TOC:QUOTE:
 #+BEGIN_QUOTE
+- [[#issues][Issues]]
 - [[#usage][Usage]]
 - [[#install-nix][Install Nix]]
 - [[#mirrors][Mirrors]]
@@ -13,7 +14,7 @@
 - [[#install-cachix][Install Cachix]]
   - [[#其它配置只是使用可忽略该部分][其它配置（只是使用可忽略该部分）]]
 - [[#install-niv-optional][Install Niv (Optional)]]
-- [[#nix-shell][nix-shell]]
+- [[#nix-shell-可用于构建编译其它软件的环境][nix-shell （可用于构建编译其它软件的环境）]]
 - [[#nix-build][nix-build]]
 - [[#nix-env][nix-env]]
   - [[#install][install]]
@@ -23,6 +24,21 @@
   - [[#rollback][rollback]]
   - [[#conflict][conflict]]
 #+END_QUOTE
+
+* Issues
+
+以下问题出在 ArchLinux 中。
+
+猜测与 /nix 下的环境有关，可能是 /nix 安装工具链有不兼容的地方。
+
+如果工具出什么问题，先看看是不是 nix 安装的包的问题。
+
+- zsh :: nix 安装的 zsh 补全时会多带两个前缀字母，在正确设置 locale 情
+  况下也是如此
+- emacs :: nix 安装的 emacs 以 proxychains 代理启动时会报 magit 无法确
+  定 emacsclient 的问题
+- proxychains-ng :: 在 nix 环境下编译安装的 proxychains 无法使用，像 ping
+  之类的命令可以使用，但是无法对通过 nix 安装的包使用，如 emacs
 
 * Usage
 
@@ -133,7 +149,7 @@ Tips:
 要查找某些包的旧版本存在于哪个 commit 可以使用,但并不一定全
 https://lazamar.co.uk/nix-versions/
 
-* nix-shell
+* nix-shell （可用于构建编译其它软件的环境）
 
 可用于启用一个含指定 pkg 的 shell 环境或构造一个含相应编译依赖的环境。
 
@@ -157,6 +173,9 @@ nix-shell '<nixpkgs>' -p <pkg>
 
 # --pure 的作用为不继承宿主机环境
 nix-shell '<nixpkgs>' -p <pkg> --pure
+
+# 启动一个包含 alacritty 所需编译环境的 shell
+nix-shell -A alacritty '<nixpkgs>'
 #+end_src
 
 * nix-build

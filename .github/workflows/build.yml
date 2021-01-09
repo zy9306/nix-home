@@ -19,7 +19,9 @@ jobs:
         with:
           name: arcueid
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
-      - run: nix-build
+      - run: |
+          nix-build extra
+          nix-build nix-emacs
 
   build-macos-latest:
     runs-on: macos-latest
@@ -33,7 +35,9 @@ jobs:
         with:
           name: arcueid
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
-      - run: nix-build
+      - run: |
+          nix-build extra
+          nix-build nix-emacs
 
   # build-macos-11:
   #   runs-on: macos-11.0

@@ -1,6 +1,8 @@
 # init nix env
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
+export PATH="$HOME/.local/bin:${PATH}"
+
 source $HOME/.shutils
 
 # common
@@ -89,3 +91,6 @@ if [[ "$HAS_STARSHIP" == true ]]; then
 else
     echo_red "!!! starship is not installed see: https://github.com/starship/starship"
 fi
+
+# 使用 emacs 键绑定，必要加这句，否则一些快捷键会出问题
+bindkey -e

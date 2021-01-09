@@ -119,4 +119,11 @@ e() {
     emacs $@ &
 }
 
+# set editor
+if [[ $(command_exists vim) == true ]];then
+    export EDITOR=vim
+elif [[ $(command_exists vi) == true ]];then
+    export EDITOR=vi
+fi
+
 alias et="emacs -nw"

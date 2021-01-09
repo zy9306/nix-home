@@ -55,7 +55,7 @@ else
     exit 0
 fi
 
-echo_red "make sure xclip or xsel is installed"
+echo_red "make sure xclip(for X) and xsel(must) is installed"
 
 cd
 

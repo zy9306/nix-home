@@ -1,58 +1,65 @@
-let cachedpkgs = import ./default.nix;
+let
+  sources = import ./nix/sources.nix;
+
+  nixpkgs = import sources."nixpkgs-release-20.09" { };
+
+  nixpkgs-unstable = import sources."nixpkgs-unstable" { };
+
+  pkgs = import <nixpkgs> { };
+
+  extra = import ./nix-extra;
 in {
   home.packages = [
+    nixpkgs.nixfmt
+
     # shell
-    cachedpkgs.alacritty_0_4_2
-    cachedpkgs.tmux
-    cachedpkgs.zsh
-    cachedpkgs.starship
+    nixpkgs.tmux
+    nixpkgs.starship
 
     # search
-    cachedpkgs.rg
-    cachedpkgs.fd
-    cachedpkgs.fzf
+    nixpkgs.ripgrep
+    nixpkgs.fd
+    nixpkgs.fzf
 
     # utils
-    cachedpkgs.unzip
-    cachedpkgs.htop
-    cachedpkgs.xclip
-    cachedpkgs.gawk
-    cachedpkgs.coreutils-full
-    cachedpkgs.universal-ctags
-    cachedpkgs.global
-    cachedpkgs.cloc
-    cachedpkgs.pandoc
-    cachedpkgs.bat
-    cachedpkgs.exa
-    cachedpkgs.navi
-    cachedpkgs.tealdeer
+    nixpkgs.unzip
+    nixpkgs.htop
+    nixpkgs.xclip
+    nixpkgs.gawk
+    nixpkgs.coreutils-full
+    nixpkgs.universal-ctags
+    nixpkgs.global
+    nixpkgs.cloc
+    nixpkgs.pandoc
+    nixpkgs.bat
+    nixpkgs.exa
+    nixpkgs.navi
+    nixpkgs.tealdeer
 
     # git
-    cachedpkgs.git
-    cachedpkgs.git-lfs
-    cachedpkgs.delta
-    cachedpkgs.bfg
-    cachedpkgs.git-filter-repo
-    cachedpkgs.pre-commit
+    nixpkgs.git
+    nixpkgs.git-lfs
+    nixpkgs.gitAndTools.delta
+    nixpkgs.bfg-repo-cleaner
+    nixpkgs.gitAndTools.git-filter-repo
+    nixpkgs.gitAndTools.pre-commit
 
     # network
-    cachedpkgs.curl
-    cachedpkgs.wget
-    cachedpkgs.aria2
+    nixpkgs.curl
+    nixpkgs.wget
+    nixpkgs.aria2
 
     # language
-    cachedpkgs.nodejs-14
+    nixpkgs.nodejs-14_x
     # install pip
     # curl https://bootstrap.pypa.io/get-pip.py | python3.7
-    cachedpkgs.python37
-    cachedpkgs.go-1_15
+    nixpkgs.python37Full
+    # nixpkgs.go_1_14
+    # 1.15.x
+    nixpkgs.go
 
     # extra
-    cachedpkgs.nixfmt
-    cachedpkgs.q
-
-    # emacs
-    cachedpkgs.emacs
+    extra.q
   ];
 
   # Let Home Manager install and manage itself.

@@ -71,18 +71,6 @@
         "url": "https://github.com/nmattia/niv/archive/9d35b9e4837ab88517210b1701127612c260eccf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "nixpkgs-528d35b": {
-        "branch": "528d35b",
-        "description": "Nix Packages collection",
-        "homepage": "",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "528d35bec0cb976a06cc0e8487c6e5136400b16b",
-        "sha256": "0j8mnzq2c0rrd1s8whs8vc5aj3v8kn85ifzkn1z77ihvxbj5cn7y",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/528d35bec0cb976a06cc0e8487c6e5136400b16b.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nixpkgs-release-20.09": {
         "branch": "release-20.09",
         "description": "Nix Packages collection",
