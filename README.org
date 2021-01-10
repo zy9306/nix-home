@@ -35,6 +35,7 @@
 
 - zsh :: nix 安装的 zsh 补全时会多带两个前缀字母，在正确设置 locale 情
   况下也是如此
+- tmux :: 需要软连接到 /usr/bin 或 /user/locale/bin，直接 pacman 安装或编译安装
 - emacs :: nix 安装的 emacs 以 proxychains 代理启动时会报 magit 无法确
   定 emacsclient 的问题
 - proxychains-ng :: 在 nix 环境下编译安装的 proxychains 无法使用，像 ping
