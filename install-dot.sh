@@ -2,7 +2,15 @@
 
 ROOT=$PWD
 
-for dir in {"dotfiles/alacritty","dotfiles/gtags","dotfiles/pip","dotfiles/yapf","private/navi-cheat"}
+__dotfilesDir="dotfiles"
+__privateDir="private"
+
+for dir in {"alacritty","gtags","pip","yapf","proxychains-ng"}
 do
-    cd $ROOT && cd $dir && ./install.sh
+    cd $ROOT && cd $__dotfilesDir/$dir && ./install.sh
+done
+
+for dir in {"navi-cheat",}
+do
+    cd $ROOT && cd $__privateDir/$dir && ./install.sh
 done
