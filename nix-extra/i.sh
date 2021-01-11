@@ -2,7 +2,7 @@
 
 DEST="$HOME/projects/Illyasviel"
 
-FILE="$DEST/s.org"
+FILE="$DEST/i.org"
 
 if [ ! -d $DEST ];then
     mkdir -p $DEST

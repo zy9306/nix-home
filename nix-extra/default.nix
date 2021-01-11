@@ -3,13 +3,13 @@ let
   stdenv = pkgs.stdenv;
   fetchFromGitHub = pkgs.fetchFromGitHub;
 in {
-  q = stdenv.mkDerivation {
-    name = "q";
+  i = stdenv.mkDerivation {
+    name = "i";
     src = ./.;
     phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/bin
-      cp ${./q.sh} $out/bin/q
+      cp ${./i.sh} $out/bin/i
     '';
   };
 
