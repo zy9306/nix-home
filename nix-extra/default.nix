@@ -13,6 +13,16 @@ in {
     '';
   };
 
+  s = stdenv.mkDerivation {
+    name = "s";
+    src = ./.;
+    phases = [ "installPhase" ];
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./s.sh} $out/bin/s
+    '';
+  };
+
   # 无法使用，一些程序会报错
   # proxychains-ng = stdenv.mkDerivation rec {
   #   name = "proxychains-ng";
