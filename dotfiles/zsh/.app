@@ -70,13 +70,18 @@ if [[ $(command_exists exa) == false ]]; then
             ls=gls
         fi
     fi
-
 else
     ls=exa
 fi
 
+ls="$ls -h --group --group-directories-first --color=always"
 
-alias ls="$ls -h --group --group-directories-first --color=always"
+if [[ $(command_exists exa) == true ]]; then
+    alias ls="$ls --git --time-style long-iso"
+    alias lg="ls -alG"  # -G: grid
+else
+    alias ls=$ls
+fi
 
 alias ll='ls -al'
 alias la='ls -a'
