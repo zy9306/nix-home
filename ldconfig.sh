@@ -15,9 +15,12 @@ do
     fi
 done
 
-LD_LIBRARY_PATH_VAR="$LD_LIBRARY_PATH_VAR:$HOME/.nix-profile/lib"
+if [ $LD_LIBRARY_PATH_VAR ];then
+    LD_LIBRARY_PATH_VAR="$LD_LIBRARY_PATH_VAR:$HOME/.nix-profile/lib"
+else
+    LD_LIBRARY_PATH_VAR="$HOME/.nix-profile/lib"
+fi
 
 echo -e "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_VAR"
 
 unset LD_LIBRARY_PATH_VAR
-
