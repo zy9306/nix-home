@@ -15,7 +15,8 @@ fi
 if [[ $(command_exists fzf) == true ]];then
     # https://github.com/junegunn/fzf/issues/223
     # https://github.com/junegunn/fzf/issues/238
-    export FZF_DEFAULT_OPTS="--bind ctrl-f:page-down,ctrl-b:page-up --height=50% --no-sort --layout=reverse"
+    # add --color=light for light theme.
+    export FZF_DEFAULT_OPTS="--bind ctrl-f:page-down,ctrl-b:page-up --height=50% --no-sort --layout=reverse --color=light"
     # --preview='bat --style=full --color=always --theme=GitHub {} 2> /dev/null'
 
     if [[ $(command_exists fd) == true ]];then
