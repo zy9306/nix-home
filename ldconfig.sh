@@ -18,10 +18,19 @@ find_version(){
     done
 }
 
+
 # 方案二：利用 nix 找出相关路径，速度较快，只添加当前版本
+
+# 使用 default.nix 中锁定版本的 nixpkgs，因为包都是通过
+# default.nix 安装的，如果不加则会使用 nix-channel --list 中的 nixpkgs
+# Or use outPath
+# nix eval $LOCKED_NIX_CHANNEL_OPT --raw nixpkgs.stdenv.cc.cc.lib.outPath
+LOCKED_NIX_CHANNEL_OPT="-f ./default.nix"
+
 nix_version(){
-    LD_LIBRARY_PATH_VAR=$(nix eval --raw nixpkgs.stdenv.cc.cc.lib)/lib
+    LD_LIBRARY_PATH_VAR=$(nix eval $LOCKED_NIX_CHANNEL_OPT --raw nixpkgs.stdenv.cc.cc.lib)/lib
 }
+
 
 # 方案三：当文件依赖于特定版本的动态库时，使用 patchelf 对其进行 patch
 # https://github.com/NixOS/patchelf
