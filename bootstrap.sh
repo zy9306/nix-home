@@ -12,7 +12,7 @@ nix-env -iA \
         nixpkgs.ripgrep \
         nixpkgs.fd \
         nixpkgs.fzf \
-        -f ./default.nix 
+        -f ./default.nix
 
 # utils
 nix-env -iA \
@@ -29,7 +29,7 @@ nix-env -iA \
         nixpkgs.exa \
         nixpkgs.navi \
         nixpkgs.tealdeer \
-        -f ./default.nix 
+        -f ./default.nix
 
 # git
 nix-env -iA \
@@ -39,21 +39,25 @@ nix-env -iA \
         nixpkgs.bfg-repo-cleaner \
         nixpkgs.gitAndTools.git-filter-repo \
         nixpkgs.gitAndTools.pre-commit \
-        -f ./default.nix 
+        -f ./default.nix
 
 # network
 nix-env -iA \
         nixpkgs.curl\
         nixpkgs.wget\
         nixpkgs.aria2 \
-        -f ./default.nix 
+        -f ./default.nix
 
 # language
-nix-env -iA nixpkgs.nodejs-14_x -f ./default.nix 
+nix-env -iA nixpkgs.nodejs-14_x -f ./default.nix
 # curl https://bootstrap.pypa.io/get-pip.py | python3.7
-nix-env -iA nixpkgs.python37Full -f ./default.nix 
+nix-env -iA nixpkgs.python37Full -f ./default.nix
+nix-env -iA nixpkgs.python38Full -f ./default.nix
 # nixpkgs.go_1_14
 # 1.15.x
-nix-env -iA nixpkgs.go -f ./default.nix 
+nix-env -iA nixpkgs.go -f ./default.nix
 
-nix-env -iA extra.q -f ./default.nix 
+nix-env -iA \
+        extra.i \
+        extra.s \
+        -f ./default.nix
