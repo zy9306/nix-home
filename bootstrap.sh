@@ -2,58 +2,58 @@
 
 source ./wrapped-install.sh
 
-NixWrappedInstall nixfmt
+nix_wrapped_install nixfmt
 
 # shell
-NixWrappedInstall starship
+nix_wrapped_install starship
 
 # search
-NixWrappedInstall ripgrep
-NixWrappedInstall fd
-NixWrappedInstall fzf
+nix_wrapped_install ripgrep
+nix_wrapped_install fd
+nix_wrapped_install fzf
 
 # utils
-NixWrappedInstall unzip
-NixWrappedInstall htop
-NixWrappedInstall xclip
-NixWrappedInstall gawk
-NixWrappedInstall coreutils-full
-# NixWrappedInstall universal-ctags
-NixWrappedInstall global
-NixWrappedInstall cloc
-NixWrappedInstall pandoc
-NixWrappedInstall bat
-NixWrappedInstall exa
-NixWrappedInstall navi
-NixWrappedInstall tealdeer
+nix_wrapped_install unzip
+nix_wrapped_install htop
+nix_wrapped_install xclip
+nix_wrapped_install gawk
+nix_wrapped_install coreutils-full
+# nix_wrapped_install universal-ctags
+nix_wrapped_install global
+nix_wrapped_install cloc
+nix_wrapped_install pandoc
+nix_wrapped_install bat
+nix_wrapped_install exa
+nix_wrapped_install navi
+nix_wrapped_install tealdeer
 
 # git
-NixWrappedInstall git
-NixWrappedInstall git-lfs
-NixWrappedInstall gitAndTools.delta
-NixWrappedInstall bfg-repo-cleaner
-NixWrappedInstall gitAndTools.git-filter-repo
-NixWrappedInstall gitAndTools.pre-commit
+nix_wrapped_install git
+nix_wrapped_install git-lfs
+nix_wrapped_install gitAndTools.delta
+nix_wrapped_install bfg-repo-cleaner
+nix_wrapped_install gitAndTools.git-filter-repo
+nix_wrapped_install gitAndTools.pre-commit
 
 # network
-NixWrappedInstall curl
-NixWrappedInstall wget
-NixWrappedInstall aria2 
+nix_wrapped_install curl
+nix_wrapped_install wget
+nix_wrapped_install aria2 
 
 # language
 ## node
-NixWrappedInstall nodejs-14_x
+nix_wrapped_install nodejs-14_x
 
 ## python
 ## curl https://bootstrap.pypa.io/get-pip.py | python3.7
-NixWrappedInstall python37Full
-NixWrappedInstall python38Full
+nix_wrapped_install python37Full
+nix_wrapped_install python38Full
 
 ## go
 ## nixpkgs.go_1_14
 ## nixpkgs.go_1_15
 ## go-1.16
-NixWrappedInstall go
+nix_wrapped_install go
 
 # extra
 nix-env -iA extra.i extra.s -f ./default.nix

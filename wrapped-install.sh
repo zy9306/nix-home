@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-NixWrappedInstall() {
-    NIX_PKG=$1
-    NIX_INSTALL_FORCE=$2
-    NIX_INSTALL_CMD="nix-env -iA nixpkgs.$NIX_PKG"
-    NIX_INSTALL_FLAG=false
+nix_wrapped_install() {
+    nix_pkg=$1
+    nix_install_force=$2
+    nix_install_cmd="nix-env -iA nixpkgs.$nix_pkg"
+    nix_install_flag=false
 
     if [ -z $1 ];then
         echo "please pass a pkg to install."
@@ -12,18 +12,18 @@ NixWrappedInstall() {
     fi
 
     # nix-env redirect all info to stderr, so redirect stderr to stdout by 2>&1
-    NIX_PKG_INSTALLED=$($NIX_INSTALL_CMD --dry-run 2>&1 | grep "replacing")
+    nix_pkg_installed=$($nix_install_cmd --dry-run 2>&1 | grep "replacing")
 
-    if [ -n "$NIX_PKG_INSTALLED" ];then
+    if [ -n "$nix_pkg_installed" ];then
         if [[ $2 == "-f" ]];then
-            NIX_INSTALL_FLAG=true
+            nix_install_flag=true
         fi
     else
-        NIX_INSTALL_FLAG=true
+        nix_install_flag=true
     fi
 
-    if [[ $NIX_INSTALL_FLAG == "true" ]];then
-       $($NIX_INSTALL_CMD 2>&1)
+    if [[ $nix_install_flag == "true" ]];then
+       $($nix_install_cmd)
     else
         echo "$1 has installed, pass -f to replacing."
     fi
