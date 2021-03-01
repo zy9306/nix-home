@@ -22,6 +22,7 @@ jobs:
       - run: |
           nix-build nix-extra
           nix-build nix-emacs
+          ./bootstrap.sh
 
   build-macos-latest:
     runs-on: macos-latest
@@ -38,6 +39,7 @@ jobs:
       - run: |
           nix-build nix-extra
           nix-build nix-emacs
+          ./bootstrap.sh
 
   # build-macos-11:
   #   runs-on: macos-11.0
