@@ -1,63 +1,59 @@
 #!/usr/bin/env bash
 
-set -e
+source ./wrapped-install.sh
 
-nix-env -iA nixpkgs.nixfmt
+nix_wrapped_install nixfmt
 
 # shell
-nix-env -iA nixpkgs.starship
+nix_wrapped_install starship
 
 # search
-nix-env -iA \
-        nixpkgs.ripgrep \
-        nixpkgs.fd \
-        nixpkgs.fzf \
-        -f ./default.nix
+nix_wrapped_install ripgrep
+nix_wrapped_install fd
+nix_wrapped_install fzf
 
 # utils
-nix-env -iA \
-        nixpkgs.unzip \
-        nixpkgs.htop \
-        nixpkgs.xclip \
-        nixpkgs.gawk \
-        nixpkgs.coreutils-full \
-        nixpkgs.universal-ctags \
-        nixpkgs.global \
-        nixpkgs.cloc \
-        nixpkgs.pandoc \
-        nixpkgs.bat \
-        nixpkgs.exa \
-        nixpkgs.navi \
-        nixpkgs.tealdeer \
-        -f ./default.nix
+nix_wrapped_install unzip
+nix_wrapped_install htop
+nix_wrapped_install xclip
+nix_wrapped_install gawk
+nix_wrapped_install coreutils-full
+# nix_wrapped_install universal-ctags
+nix_wrapped_install global
+nix_wrapped_install cloc
+nix_wrapped_install pandoc
+nix_wrapped_install bat
+nix_wrapped_install exa
+nix_wrapped_install navi
+nix_wrapped_install tealdeer
 
 # git
-nix-env -iA \
-        nixpkgs.git \
-        nixpkgs.git-lfs \
-        nixpkgs.gitAndTools.delta \
-        nixpkgs.bfg-repo-cleaner \
-        nixpkgs.gitAndTools.git-filter-repo \
-        nixpkgs.gitAndTools.pre-commit \
-        -f ./default.nix
+nix_wrapped_install git
+nix_wrapped_install git-lfs
+nix_wrapped_install gitAndTools.delta
+nix_wrapped_install bfg-repo-cleaner
+nix_wrapped_install gitAndTools.git-filter-repo
+nix_wrapped_install gitAndTools.pre-commit
 
 # network
-nix-env -iA \
-        nixpkgs.curl\
-        nixpkgs.wget\
-        nixpkgs.aria2 \
-        -f ./default.nix
+nix_wrapped_install curl
+nix_wrapped_install wget
+nix_wrapped_install aria2 
 
 # language
-nix-env -iA nixpkgs.nodejs-14_x -f ./default.nix
-# curl https://bootstrap.pypa.io/get-pip.py | python3.7
-nix-env -iA nixpkgs.python37Full -f ./default.nix
-nix-env -iA nixpkgs.python38Full -f ./default.nix
-# nixpkgs.go_1_14
-# 1.15.x
-nix-env -iA nixpkgs.go -f ./default.nix
+## node
+nix_wrapped_install nodejs-14_x
 
-nix-env -iA \
-        extra.i \
-        extra.s \
-        -f ./default.nix
+## python
+## curl https://bootstrap.pypa.io/get-pip.py | python3.7
+nix_wrapped_install python37Full
+nix_wrapped_install python38Full
+
+## go
+## nixpkgs.go_1_14
+## nixpkgs.go_1_15
+## go-1.16
+nix_wrapped_install go
+
+# extra
+nix-env -iA extra.i extra.s -f ./default.nix
