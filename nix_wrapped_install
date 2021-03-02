@@ -14,6 +14,8 @@ nix_wrapped_install() {
     # nix-env redirect all info to stderr, so redirect stderr to stdout by 2>&1
     nix_install_stdout=$($nix_install_cmd --dry-run 2>&1)
 
+    echo -e "stdout of dry run:\n$nix_install_stdout\n"
+
     nix_pkg_installed=$(echo "$nix_install_stdout" | grep "replacing")
 
     if [ -n "$nix_pkg_installed" ];then
@@ -25,12 +27,11 @@ nix_wrapped_install() {
     fi
 
     if [[ $nix_install_flag == "true" ]];then
-       $($nix_install_cmd)
+        echo -e "start install:\n"
+        $($nix_install_cmd)
     else
         echo "$1 has installed, pass -f to replacing."
     fi
-
-    echo -e "stdout:\n$nix_install_stdout\n"
 }
 
 nix_wrapped_install $@
