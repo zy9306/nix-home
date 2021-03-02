@@ -20,6 +20,10 @@ jobs:
           name: arcueid
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
       - run: |
+          nix-channel --list
+          nix-channel --remove nixpkgs
+          nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+          nix-channel --update
           nix-build nix-extra
           nix-build nix-emacs
           ./bootstrap.sh
@@ -37,6 +41,10 @@ jobs:
           name: arcueid
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
       - run: |
+          nix-channel --list
+          nix-channel --remove nixpkgs
+          nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+          nix-channel --update
           nix-build nix-extra
           nix-build nix-emacs
           ./bootstrap.sh
