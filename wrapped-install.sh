@@ -8,7 +8,7 @@ nix_wrapped_install() {
 
     if [ -z $1 ];then
         echo "please pass a pkg to install."
-        exit 0
+        return
     fi
 
     # nix-env redirect all info to stderr, so redirect stderr to stdout by 2>&1
