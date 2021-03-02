@@ -28,3 +28,5 @@ nix_wrapped_install() {
         echo "$1 has installed, pass -f to replacing."
     fi
 }
+
+nix_wrapped_install $@
