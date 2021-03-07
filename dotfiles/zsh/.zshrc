@@ -1,7 +1,8 @@
 # init nix env
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
-export PATH="$HOME/.local/bin:${PATH}"
+SYS_PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/bin"
+export PATH="$SYS_PATH:${PATH}"
 
 source $HOME/.shutils
 
