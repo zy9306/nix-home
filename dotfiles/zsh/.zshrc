@@ -1,8 +1,10 @@
 # init nix env
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
-SYS_PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/bin"
-export PATH="$SYS_PATH:${PATH}"
+if [[ $(uname -s) == "Linux" ]]; then
+    SYS_PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/bin"
+    export PATH="$SYS_PATH:${PATH}"
+fi
 
 source $HOME/.shutils
 
