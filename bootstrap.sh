@@ -44,8 +44,12 @@
 
 ## python
 ## curl https://bootstrap.pypa.io/get-pip.py | python3.7
+### virtualenv
+### python3.7 -m pip install virtualenv virtualenv-clone virtualenvwrapper
+### mkvirtualenv venv37 --python=python3.7
+### nix-shell -p python39
+### mkvirtualenv venv39 --python=python3.9
 ./nix_wrapped_install python37Full
-./nix_wrapped_install python38Full
 
 ## go
 ## nixpkgs.go_1_14
