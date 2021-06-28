@@ -1,45 +1,49 @@
 #!/usr/bin/env bash
 
-nix-env -iA nixpkgs.nixfmt
+lock_file="$PWD/default.nix"
+
+locked_nix_install="nix-env -iA -f $lock_file"
+
+eval $locked_nix_install nixpkgs.nixfmt
 
 # shell
-nix-env -iA nixpkgs.starship
+eval $locked_nix_install nixpkgs.starship
 
 # search
-nix-env -iA nixpkgs.ripgrep
-nix-env -iA nixpkgs.fd
-nix-env -iA nixpkgs.fzf
+eval $locked_nix_install nixpkgs.ripgrep
+eval $locked_nix_install nixpkgs.fd
+eval $locked_nix_install nixpkgs.fzf
 
 # utils
-nix-env -iA nixpkgs.unzip
-nix-env -iA nixpkgs.htop
-nix-env -iA nixpkgs.xclip
-nix-env -iA nixpkgs.gawk
-nix-env -iA nixpkgs.universal-ctags
-nix-env -iA nixpkgs.global
-nix-env -iA nixpkgs.cloc
-nix-env -iA nixpkgs.pandoc
-nix-env -iA nixpkgs.bat
-nix-env -iA nixpkgs.exa
-nix-env -iA nixpkgs.navi
-nix-env -iA nixpkgs.tealdeer
+eval $locked_nix_install nixpkgs.unzip
+eval $locked_nix_install nixpkgs.htop
+eval $locked_nix_install nixpkgs.xclip
+eval $locked_nix_install nixpkgs.gawk
+eval $locked_nix_install nixpkgs.universal-ctags
+eval $locked_nix_install nixpkgs.global
+eval $locked_nix_install nixpkgs.cloc
+eval $locked_nix_install nixpkgs.pandoc
+eval $locked_nix_install nixpkgs.bat
+eval $locked_nix_install nixpkgs.exa
+eval $locked_nix_install nixpkgs.navi
+eval $locked_nix_install nixpkgs.tealdeer
 
 # git
-nix-env -iA nixpkgs.git
-nix-env -iA nixpkgs.git-lfs
-nix-env -iA nixpkgs.gitAndTools.delta
-nix-env -iA nixpkgs.bfg-repo-cleaner
-nix-env -iA nixpkgs.gitAndTools.git-filter-repo
-nix-env -iA nixpkgs.gitAndTools.pre-commit
+eval $locked_nix_install nixpkgs.git
+eval $locked_nix_install nixpkgs.git-lfs
+eval $locked_nix_install nixpkgs.gitAndTools.delta
+eval $locked_nix_install nixpkgs.bfg-repo-cleaner
+eval $locked_nix_install nixpkgs.gitAndTools.git-filter-repo
+eval $locked_nix_install nixpkgs.gitAndTools.pre-commit
 
 # network
-nix-env -iA nixpkgs.curl
-nix-env -iA nixpkgs.wget
-nix-env -iA nixpkgs.aria2 
+eval $locked_nix_install nixpkgs.curl
+eval $locked_nix_install nixpkgs.wget
+eval $locked_nix_install nixpkgs.aria2 
 
 # language
 ## node
-nix-env -iA nixpkgs.nodejs-14_x
+eval $locked_nix_install nixpkgs.nodejs-14_x
 
 ## python
 ## curl https://bootstrap.pypa.io/get-pip.py | python3.7
@@ -48,26 +52,26 @@ nix-env -iA nixpkgs.nodejs-14_x
 ### mkvirtualenv venv37 --python=python3.7
 ### nix-shell -p python39
 ### mkvirtualenv venv39 --python=python3.9
-nix-env -iA nixpkgs.python37Full
+eval $locked_nix_install nixpkgs.python37Full
 
 ## go
 ## nixpkgs.go_1_14
 ## nixpkgs.go_1_15
 ## go-1.16
-nix-env -iA nixpkgs.go
+eval $locked_nix_install nixpkgs.go
 
 # extra
-nix-env -iA extra.i extra.s -f ./default.nix
+eval $locked_nix_install extra.i extra.s -f ./default.nix
 
 
 # macOS bsd tools to gnu.
 case "$(uname -s)" in
     Darwin)
-        nix-env -iA nixpkgs.coreutils-full
-        nix-env -iA nixpkgs.gnugrep
-        nix-env -iA nixpkgs.gnutar
-        nix-env -iA nixpkgs.findutils
-        nix-env -iA nixpkgs.gnused
+        eval $locked_nix_install nixpkgs.coreutils-full
+        eval $locked_nix_install nixpkgs.gnugrep
+        eval $locked_nix_install nixpkgs.gnutar
+        eval $locked_nix_install nixpkgs.findutils
+        eval $locked_nix_install nixpkgs.gnused
         ;;
     Linux)
         ;;
