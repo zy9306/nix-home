@@ -121,7 +121,9 @@ substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://c
 
 #+begin_src shell
 # 官方 channel：https://nixos.org/channels/nixpkgs-unstable
-# 注意：一定要保留 nixpkgs 这个 channel 名称，不要命名，否则 home-manager 会无法工作
+# 删掉其它的，只保留清华的镜像即可
+nix-channel --list
+nix-channel --remove nixpkgs
 nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
 nix-channel --update
 #+end_src
