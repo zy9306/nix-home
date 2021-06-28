@@ -1,45 +1,45 @@
 #!/usr/bin/env bash
 
-./nix_wrapped_install nixfmt
+nix-env -iA nixpkgs.nixfmt
 
 # shell
-./nix_wrapped_install starship
+nix-env -iA nixpkgs.starship
 
 # search
-./nix_wrapped_install ripgrep
-./nix_wrapped_install fd
-./nix_wrapped_install fzf
+nix-env -iA nixpkgs.ripgrep
+nix-env -iA nixpkgs.fd
+nix-env -iA nixpkgs.fzf
 
 # utils
-./nix_wrapped_install unzip
-./nix_wrapped_install htop
-./nix_wrapped_install xclip
-./nix_wrapped_install gawk
-./nix_wrapped_install universal-ctags
-./nix_wrapped_install global
-./nix_wrapped_install cloc
-./nix_wrapped_install pandoc
-./nix_wrapped_install bat
-./nix_wrapped_install exa
-./nix_wrapped_install navi
-./nix_wrapped_install tealdeer
+nix-env -iA nixpkgs.unzip
+nix-env -iA nixpkgs.htop
+nix-env -iA nixpkgs.xclip
+nix-env -iA nixpkgs.gawk
+nix-env -iA nixpkgs.universal-ctags
+nix-env -iA nixpkgs.global
+nix-env -iA nixpkgs.cloc
+nix-env -iA nixpkgs.pandoc
+nix-env -iA nixpkgs.bat
+nix-env -iA nixpkgs.exa
+nix-env -iA nixpkgs.navi
+nix-env -iA nixpkgs.tealdeer
 
 # git
-./nix_wrapped_install git
-./nix_wrapped_install git-lfs
-./nix_wrapped_install gitAndTools.delta
-./nix_wrapped_install bfg-repo-cleaner
-./nix_wrapped_install gitAndTools.git-filter-repo
-./nix_wrapped_install gitAndTools.pre-commit
+nix-env -iA nixpkgs.git
+nix-env -iA nixpkgs.git-lfs
+nix-env -iA nixpkgs.gitAndTools.delta
+nix-env -iA nixpkgs.bfg-repo-cleaner
+nix-env -iA nixpkgs.gitAndTools.git-filter-repo
+nix-env -iA nixpkgs.gitAndTools.pre-commit
 
 # network
-./nix_wrapped_install curl
-./nix_wrapped_install wget
-./nix_wrapped_install aria2 
+nix-env -iA nixpkgs.curl
+nix-env -iA nixpkgs.wget
+nix-env -iA nixpkgs.aria2 
 
 # language
 ## node
-./nix_wrapped_install nodejs-14_x
+nix-env -iA nixpkgs.nodejs-14_x
 
 ## python
 ## curl https://bootstrap.pypa.io/get-pip.py | python3.7
@@ -48,13 +48,13 @@
 ### mkvirtualenv venv37 --python=python3.7
 ### nix-shell -p python39
 ### mkvirtualenv venv39 --python=python3.9
-./nix_wrapped_install python37Full
+nix-env -iA nixpkgs.python37Full
 
 ## go
 ## nixpkgs.go_1_14
 ## nixpkgs.go_1_15
 ## go-1.16
-./nix_wrapped_install go
+nix-env -iA nixpkgs.go
 
 # extra
 nix-env -iA extra.i extra.s -f ./default.nix
@@ -63,11 +63,11 @@ nix-env -iA extra.i extra.s -f ./default.nix
 # macOS bsd tools to gnu.
 case "$(uname -s)" in
     Darwin)
-        ./nix_wrapped_install coreutils-full
-        ./nix_wrapped_install gnugrep
-        ./nix_wrapped_install gnutar
-        ./nix_wrapped_install findutils
-        ./nix_wrapped_install gnused
+        nix-env -iA nixpkgs.coreutils-full
+        nix-env -iA nixpkgs.gnugrep
+        nix-env -iA nixpkgs.gnutar
+        nix-env -iA nixpkgs.findutils
+        nix-env -iA nixpkgs.gnused
         ;;
     Linux)
         ;;
