@@ -5,6 +5,7 @@
 
 * Table of Contents                                                     :TOC:QUOTE:
 #+BEGIN_QUOTE
+- [[#tldr][TLDR]]
 - [[#issues][Issues]]
 - [[#usage][Usage]]
 - [[#install-nix][Install Nix]]
@@ -25,6 +26,41 @@
   - [[#conflict][conflict]]
 #+END_QUOTE
 
+* TLDR
+#+begin_src shell
+nix-env -qaP ".*emacs.*"
+# output:
+# ...
+# emacsGcc                   emacs-gcc-20210627.0
+# emacsGit                   emacs-git-20210627.0
+# qemacs                     qemacs-0.3.3
+# ...
+
+# 如果已存在则会更新
+nix-env -iA nixpkgs.emacsGcc
+
+nix-env --install emacs-gcc-20210627.0
+
+nix-env -q
+# output:
+# ...
+# aria2-1.35.0
+# bat-0.17.1
+# bfg-repo-cleaner-1.13.0
+# ...
+
+nix-env --uninstall aria2-1.35.0
+
+nix-env -e aria2
+
+nix-shell -p python37Full
+
+# update nix/sources.json
+niv update
+
+# 锁定版本
+nix-env -qaP ".*emacs.*" -f https://github.com/NixOS/nixpkgs/archive/e85975942742a3728226ac22a3415f2355bfc897.tar.gz
+#+end_src
 * Issues
 
 以下问题出在 ArchLinux 中。
