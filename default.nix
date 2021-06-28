@@ -5,6 +5,4 @@ let
 
   pkgs = import <nixpkgs> { };
 
-  extra = import ./nix-extra;
-
-in { inherit nixpkgs pkgs extra; }
+in { inherit nixpkgs pkgs ; }
