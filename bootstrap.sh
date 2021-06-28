@@ -15,8 +15,7 @@
 ./nix_wrapped_install htop
 ./nix_wrapped_install xclip
 ./nix_wrapped_install gawk
-./nix_wrapped_install coreutils-full
-# ./nix_wrapped_install universal-ctags
+./nix_wrapped_install universal-ctags
 ./nix_wrapped_install global
 ./nix_wrapped_install cloc
 ./nix_wrapped_install pandoc
@@ -59,3 +58,23 @@
 
 # extra
 nix-env -iA extra.i extra.s -f ./default.nix
+
+
+# macOS bsd tools to gnu.
+case "$(uname -s)" in
+    Darwin)
+        ./nix_wrapped_install coreutils-full
+        ./nix_wrapped_install gnugrep
+        ./nix_wrapped_install gnutar
+        ./nix_wrapped_install findutils
+        ./nix_wrapped_install gnused
+        ;;
+    Linux)
+        ;;
+    CYGWIN*|MINGW32*|MSYS*|MINGW*)
+        echo 'Nothing Can Do.'
+        ;;
+    *)
+        echo 'Only Support Linux and OSX'
+        ;;
+esac
