@@ -60,9 +60,6 @@ eval $locked_nix_install nixpkgs.python37Full
 ## go-1.16
 eval $locked_nix_install nixpkgs.go
 
-# extra
-eval $locked_nix_install extra.i extra.s -f ./default.nix
-
 
 # macOS bsd tools to gnu.
 case "$(uname -s)" in
