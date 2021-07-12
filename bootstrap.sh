@@ -39,7 +39,10 @@ eval $locked_nix_install nixpkgs.gitAndTools.pre-commit
 # network
 eval $locked_nix_install nixpkgs.curl
 eval $locked_nix_install nixpkgs.wget
-eval $locked_nix_install nixpkgs.aria2 
+eval $locked_nix_install nixpkgs.aria2
+
+# k8s tool
+eval $locked_nix_install nixpkgs.stern
 
 # language
 ## node
