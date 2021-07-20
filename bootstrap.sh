@@ -51,11 +51,12 @@ eval $locked_nix_install nixpkgs.nodejs-14_x
 ## python
 ## curl https://bootstrap.pypa.io/get-pip.py | python3.7
 ### virtualenv
-### python3.7 -m pip install virtualenv virtualenv-clone virtualenvwrapper
+### python3.7 -m pip install virtualenv virtualenvwrapper
 ### mkvirtualenv venv37 --python=python3.7
-### nix-shell -p python39
-### mkvirtualenv venv39 --python=python3.9
-eval $locked_nix_install nixpkgs.python37Full
+
+# nix-env 只能存在一个版本的 python，nix-shell -p 下创建虚拟环境则不可
+# 靠，gc 时会删除掉，因此 python 还是手动编译安装
+# eval $locked_nix_install nixpkgs.python37Full
 
 ## go
 ## nixpkgs.go_1_14
