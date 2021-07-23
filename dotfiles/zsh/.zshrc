@@ -1,3 +1,15 @@
+# config LD_LIBRARY_PATH
+if [ -d /usr/local/lib ]; then
+    APPEND_LD_LIBRARY_PATH="/usr/local/lib"
+    if [[ $LD_LIBRARY_PATH != *"$APPEND_LD_LIBRARY_PATH"* ]];then
+        if [ ! $LD_LIBRARY_PATH ];then
+            export LD_LIBRARY_PATH=$APPEND_LD_LIBRARY_PATH
+        else
+            export LD_LIBRARY_PATH=$APPEND_LD_LIBRARY_PATH:$LD_LIBRARY_PATH
+        fi
+    fi
+fi
+
 # init nix env
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
