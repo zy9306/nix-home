@@ -34,7 +34,6 @@ eval $locked_nix_install nixpkgs.git-lfs
 eval $locked_nix_install nixpkgs.gitAndTools.delta
 eval $locked_nix_install nixpkgs.bfg-repo-cleaner
 eval $locked_nix_install nixpkgs.gitAndTools.git-filter-repo
-eval $locked_nix_install nixpkgs.gitAndTools.pre-commit
 
 # network
 eval $locked_nix_install nixpkgs.curl

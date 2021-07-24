@@ -1,6 +1,6 @@
 # config LD_LIBRARY_PATH
 if [ -d /usr/local/lib ]; then
-    APPEND_LD_LIBRARY_PATH="/usr/local/lib"
+    APPEND_LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib64"
     if [[ $LD_LIBRARY_PATH != *"$APPEND_LD_LIBRARY_PATH"* ]];then
         if [ ! $LD_LIBRARY_PATH ];then
             export LD_LIBRARY_PATH=$APPEND_LD_LIBRARY_PATH
