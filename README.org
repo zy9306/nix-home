@@ -63,19 +63,20 @@ nix-env -qaP ".*emacs.*" -f https://github.com/NixOS/nixpkgs/archive/e8597594274
 #+end_src
 * Issues
 
-以下问题出在 ArchLinux 中。
-
-猜测与 /nix 下的环境有关，可能是 /nix 安装工具链有不兼容的地方。
-
-如果工具出什么问题，先看看是不是 nix 安装的包的问题。
+nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的问题，对于有动态
+依赖问题的应用不建议使用 nix。由于 /nix 目录不稳定，手动指定动态库位置
+有可能失效。但由于 nix 安装卸载都很干净，对于不确定的应用可以先尝试一
+下，以下是目前有问题的应用：
 
 - zsh :: nix 安装的 zsh 补全时会多带两个前缀字母，在正确设置 locale 情
-  况下也是如此
-- tmux :: 需要软连接到 /usr/bin 或 /user/locale/bin，直接 pacman 安装或编译安装
+  况下也是如此，直接通过包管理安装
+- tmux :: 需要软连接到 /usr/bin 或 /user/locale/bin，直接编译安装
 - emacs :: nix 安装的 emacs 以 proxychains 代理启动时会报 magit 无法确
-  定 emacsclient 的问题
+  定 emacsclient 的问题，直接编译安装
 - proxychains-ng :: 在 nix 环境下编译安装的 proxychains 无法使用，像 ping
   之类的命令可以使用，但是无法对通过 nix 安装的包使用，如 emacs
+- python :: glibc 问题。直接编译安装。
+- node :: npm 安装包会有问题，路径不对。node 直接官网下二进制安装即可。
 
 * Usage
 
