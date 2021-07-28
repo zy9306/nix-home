@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 # bat config
 if [[ $(command_exists bat) == true ]];then
     export BAT_THEME="GitHub"  # use GitHub for white theme, zenburn for black theme.

@@ -1,3 +1,5 @@
+# -*- mode: conf -*-
+
 # https://starship.rs/guide/
 
 [git_branch]
