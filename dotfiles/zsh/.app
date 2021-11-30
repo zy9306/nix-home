@@ -139,3 +139,8 @@ elif [[ $(command_exists vi) == true ]];then
 fi
 
 alias et="emacs -nw"
+
+
+if [[ $(command_exists kubectl) == true ]];then
+    source <(kubectl completion zsh)
+fi
