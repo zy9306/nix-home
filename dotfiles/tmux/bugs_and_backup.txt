@@ -62,3 +62,43 @@ bind-key -n TripleClick1Pane \
 # bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" \"copy-mode -eM\" \"send-keys -M\"' 'copy-mode -eM'
 
 
+# ### color set start
+# 不同终端模拟器对于基础色的定义都不太一样,指定各基础色的16进制来保证表现一致
+miku_origin="#39c5bb"
+miku_brightness_65="#30a69e"
+miku_brightness_50="#258079"
+
+color_black='black'
+color_red='red'
+color_green=$miku_origin
+color_yellow='yellow'
+color_blue=$miku_brightness_65
+color_magenta='magenta'
+color_cyan='cyan'
+color_white='#ffffff'
+
+# man tmux | grep For how to specify style, see the message-command-style option.
+
+# 当前tab背景色
+set -g window-status-current-style "bg=$color_white",fg="$miku_brightness_50,bold"
+
+# 当前pane边框颜色
+set -g pane-active-border-style "fg=$miku_origin"
+
+# 状态栏颜色
+set -g status-style "fg=$miku_brightness_50",bg=$miku_origin
+
+# 状态栏右侧颜色(含主机名的那一段)
+set -g status-right-style bg=$miku_origin
+
+# copy-mode 鼠标选中等配色
+set -g mode-style bg=$miku_brightness_65,"fg=$color_white"
+
+# prefix+: 配色
+set -g message-style bg=$miku_origin,"fg=$color_black"
+
+set -g message-command-style bg=$miku_origin
+
+# 有活动状态的tab配色,默认为反转
+set -g window-status-activity-style "bg=$miku_brightness_50",fg="$color_white"
+# ### color set end
