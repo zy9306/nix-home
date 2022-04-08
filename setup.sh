@@ -2,25 +2,21 @@
 
 set -e
 
-STYLE_NORMAL='\033[0m'
-STYLE_RED='\033[31m'
-
-echo_red() {
-    echo -e "${STYLE_RED}$@${STYLE_NORMAL}"
-}
-
 install_nix() {
-    echo_red ">>> install nix ..."
+    echo ">>> install nix ..."
     curl -L https://nixos.org/nix/install | sh
 }
 
 update_nix_channel() {
-    echo_red ">>> update nix channel ..."
+    echo ">>> update nix channel ..."
     nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+    # from ./nix/sources.json
+    nix-channel --add https://github.com/NixOS/nixpkgs/archive/30d3d79b7d3607d56546dd2a6b49e156ba0ec634.tar.gz pkgs
+    nix-channel --update
 }
 
 install_cachix() {
-    echo_red ">>> install cachix ..."
+    echo ">>> install cachix ..."
     nix-env -iA cachix -f https://cachix.org/api/v1/install
     cachix use arcueid
 }
