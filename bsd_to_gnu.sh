@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-lock_file="$PWD/default.nix"
-
-install="nix-env -iA -f $lock_file pkgs"
+install="nix-env -iA pkgs"
 
 # macOS bsd tools to gnu.
 case "$(uname -s)" in
