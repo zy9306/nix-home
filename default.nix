@@ -11,6 +11,8 @@ in
 {
   niv = pkgs.niv;
   nixfmt = pkgs.nixfmt;
+  # run nix-index, then nix-locate pattern will work.
+  nix-index = pkgs.nix-index;
   nixpkgs-fmt = pkgs.nixpkgs-fmt;
   starship = pkgs.starship;
   ripgrep = pkgs.ripgrep;
