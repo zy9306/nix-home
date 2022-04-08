@@ -9,11 +9,11 @@ let
   latest = import <nixpkgs> { };
 in
 {
-  niv = pkgs.niv;
-  nixfmt = pkgs.nixfmt;
+  # ## nix
+  niv = pkgs.niv;  
   # run nix-index, then nix-locate pattern will work.
   nix-index = pkgs.nix-index;
-  nixpkgs-fmt = pkgs.nixpkgs-fmt;
+
   starship = pkgs.starship;
   ripgrep = pkgs.ripgrep;
   fd = pkgs.fd;
@@ -37,6 +37,11 @@ in
   wget = pkgs.wget;
   aria2 = pkgs.aria2;
   stern = pkgs.stern;
+
+  # ## format tool
+  shfmt = pkgs.shfmt;
+  nixfmt = pkgs.nixfmt;
+  nixpkgs-fmt = pkgs.nixpkgs-fmt;
 
   # emacsGcc = pkgs.emacsGcc.overrideAttrs (old: {
   #   configureFlags = old.configureFlags ++ [ "--program-transform-name='s/^ctags$/ctags.emacs/'" ];
