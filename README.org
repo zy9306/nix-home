@@ -1,5 +1,6 @@
 #+OPTIONS: ^:{}
 #+OPTIONS: -:nil
+#+STARTUP: content
 
 [[https://github.com/zy9306/nix-home/workflows/Build/badge.svg?branch=master]]
 
@@ -15,7 +16,7 @@
 - [[#install-cachix][Install Cachix]]
   - [[#其它配置只是使用可忽略该部分][其它配置（只是使用可忽略该部分）]]
 - [[#install-niv-optional][Install Niv (Optional)]]
-- [[#nix-shell-可用于构建编译其它软件的环境][nix-shell （可用于构建编译其它软件的环境）]]
+- [[#nix-shell][nix-shell]]
 - [[#nix-build][nix-build]]
 - [[#nix-env][nix-env]]
   - [[#install][install]]
@@ -27,6 +28,7 @@
 #+END_QUOTE
 
 * TLDR
+
 #+begin_src shell
 nix-env -qaP ".*emacs.*"
 # output:
@@ -61,6 +63,8 @@ niv update
 # 锁定版本
 nix-env -qaP ".*emacs.*" -f https://github.com/NixOS/nixpkgs/archive/e85975942742a3728226ac22a3415f2355bfc897.tar.gz
 #+end_src
+
+
 * Issues
 
 nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的问题，对于有动态
@@ -78,6 +82,7 @@ nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的�
 - python :: glibc 问题。直接编译安装。
 - node :: npm 安装包会有问题，路径不对。node 直接官网下二进制安装即可。
 
+
 * Usage
 
 #+begin_src shell
@@ -94,6 +99,7 @@ cd private
 git submodule update --init --recursive
 #+end_src
 
+
 * Install Nix
 
 #+begin_quote
@@ -105,10 +111,13 @@ https://nixos.org/download.html#nix-quick-install
 curl -L https://nixos.org/nix/install | sh
 #+end_src
 
+
 * Mirrors
+
 #+begin_quote
 https://mirrors.tuna.tsinghua.edu.cn/help/nix/
 #+end_quote
+
 
 ** 缓存镜像
 
@@ -117,6 +126,7 @@ https://mirrors.tuna.tsinghua.edu.cn/help/nix/
 #+begin_src 
 substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org https://arcueid.cachix.org
 #+end_src
+
 
 ** channel 镜像
 
@@ -129,6 +139,7 @@ nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unst
 nix-channel --update
 #+end_src
 
+
 * Install Cachix
 
 安装
@@ -140,6 +151,7 @@ nix-env -iA cachix -f https://cachix.org/api/v1/install
 #+begin_src shell
 cachix use arcueid
 #+end_src
+
 
 ** 其它配置（只是使用可忽略该部分）
 
@@ -168,6 +180,7 @@ https://docs.cachix.org/continuous-integration-setup/index.html
 https://docs.cachix.org/installation.html
 #+end_quote
 
+
 * Install Niv (Optional)
 
 Install
@@ -189,7 +202,8 @@ Tips:
 要查找某些包的旧版本存在于哪个 commit 可以使用,但并不一定全
 https://lazamar.co.uk/nix-versions/
 
-* nix-shell （可用于构建编译其它软件的环境）
+
+* nix-shell
 
 可用于启用一个含指定 pkg 的 shell 环境或构造一个含相应编译依赖的环境。
 
@@ -218,6 +232,7 @@ nix-shell '<nixpkgs>' -p <pkg> --pure
 nix-shell -A alacritty '<nixpkgs>'
 #+end_src
 
+
 * nix-build
 
 #+begin_src shell
@@ -229,7 +244,9 @@ nix-build -A emacsGcc ./emacs/default.nix
 nix-build --dry-run
 #+end_src
 
+
 * nix-env
+
 
 ** install
 
@@ -263,11 +280,13 @@ nix-env -q
 nix-env -qa '.*(firefox|chromium).*'
 #+end_src
 
+
 ** update
 
 #+begin_src shell
 nix-env --upgrade gcc
 #+end_src
+
 
 ** delete
 
@@ -278,12 +297,14 @@ nix-env --uninstall gcc
 nix-env -e '.*'
 #+end_src
 
+
 ** rollback
 
 #+begin_src shell
 nix-env --list-generations
 nix-env --rollback {generation}
 #+end_src
+
 
 ** conflict
 
