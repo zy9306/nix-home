@@ -131,6 +131,10 @@ e() {
     emacs $@ &
 }
 
+nix-query() {
+    nix-env -qaP $@
+}
+
 # set editor
 if [[ $(command_exists vim) == true ]];then
     export EDITOR=vim
