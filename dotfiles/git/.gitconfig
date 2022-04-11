@@ -1,0 +1,31 @@
+[user]
+    name = Chtholly
+    email = zy99306@outlook.com
+
+[url "ssh://git@git.17bdc.com/"]
+    insteadOf = https://git.17bdc.com/
+
+[core]
+    pager = delta
+    quotepath = false
+    excludesfile = ~/.gitignore_global
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    features = line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[delta "decorations"]
+    commit-decoration-style = yellow ul ol
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan ul
