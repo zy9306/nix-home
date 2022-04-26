@@ -52,4 +52,8 @@ in
 
 # nix-env -iA nixpkgs.git
 # nix-env -i -f default.nix
-# nix-env -iA pkgs.nixpkgs-fmt -f default.nix
+
+# lock channel
+# nix-channel --add https://github.com/NixOS/nixpkgs/archive/30d3d79b7d3607d56546dd2a6b49e156ba0ec634.tar.gz pkgs
+# nix-channel --update
+# nix-env -iA pkgs.nixpkgs-fmt
