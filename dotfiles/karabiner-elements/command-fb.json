@@ -2,6 +2,39 @@
   "title": "command + f/b to option + f/b",
   "rules": [
     {
+      "description": "command+delete_or_backspace -> option+delete_or_backspace",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "modifiers": ["left_option"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Terminal$",
+                "^com\\.googlecode\\.iterm2$",
+                "^io\\.alacritty$",
+                "^net\\.kovidgoyal\\.kitty$",
+                "^cz\\.or\\.repo\\.git-gui$",
+                "^com\\.jetbrains\\."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "description": "command+f -> option+f",
       "manipulators": [
         {
