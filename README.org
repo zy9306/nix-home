@@ -4,18 +4,18 @@
 
 [[https://github.com/zy9306/nix-home/workflows/Build/badge.svg?branch=master]]
 
-* Table of Contents                                                     :TOC:QUOTE:
+* table of contents                                               :TOC:QUOTE:
 #+BEGIN_QUOTE
-- [[#tldr][TLDR]]
-- [[#issues][Issues]]
-- [[#usage][Usage]]
-- [[#install-nix][Install Nix]]
-- [[#mirrors][Mirrors]]
-  - [[#缓存镜像][缓存镜像]]
-  - [[#channel-镜像][channel 镜像]]
-- [[#install-cachix][Install Cachix]]
-  - [[#其它配置只是使用可忽略该部分][其它配置（只是使用可忽略该部分）]]
-- [[#install-niv-optional][Install Niv (Optional)]]
+- [[#tldr][tldr]]
+- [[#issues][issues]]
+- [[#usage][usage]]
+- [[#install-nix][install nix]]
+- [[#mirrors][mirrors]]
+  - [[#cache-mirror][cache mirror]]
+  - [[#channel-mirror][channel mirror]]
+- [[#install-cachix][install cachix]]
+  - [[#private-config][private config]]
+- [[#install-niv-optional][install niv (optional)]]
 - [[#nix-shell][nix-shell]]
 - [[#nix-build][nix-build]]
 - [[#nix-env][nix-env]]
@@ -27,7 +27,7 @@
   - [[#conflict][conflict]]
 #+END_QUOTE
 
-* TLDR
+* tldr
 
 #+begin_src shell
 nix-env -qaP ".*emacs.*"
@@ -65,25 +65,24 @@ nix-env -qaP ".*emacs.*" -f https://github.com/NixOS/nixpkgs/archive/e8597594274
 #+end_src
 
 
-* Issues
+* issues
 
-nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的问题，对于有动态
-依赖问题的应用不建议使用 nix。由于 /nix 目录不稳定，手动指定动态库位置
-有可能失效。但由于 nix 安装卸载都很干净，对于不确定的应用可以先尝试一
-下，以下是目前有问题的应用：
+nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的问题
 
-- zsh :: nix 安装的 zsh 补全时会多带两个前缀字母，在正确设置 locale 情
-  况下也是如此，直接通过包管理安装
-- tmux :: 需要软连接到 /usr/bin 或 /user/locale/bin，直接编译安装
-- emacs :: nix 安装的 emacs 以 proxychains 代理启动时会报 magit 无法确
-  定 emacsclient 的问题，直接编译安装
-- proxychains-ng :: 在 nix 环境下编译安装的 proxychains 无法使用，像 ping
-  之类的命令可以使用，但是无法对通过 nix 安装的包使用，如 emacs
-- python :: glibc 问题。直接编译安装。
-- node :: npm 安装包会有问题，路径不对。node 直接官网下二进制安装即可。
+以 libffi.so.6 为例，其它类似问题也可以同样处理，如果解决不了通过其它
+途径安装
+
+#+begin_src sh
+fd libffi.so /nix
+# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so
+# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7.1.0
+# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7
+sudo cp /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7.1.0 /usr/local/lib
+sudo ln -s /usr/local/lib/libffi.so.7.1.0 /usr/local/lib/libffi.so.6
+#+end_src
 
 
-* Usage
+* usage
 
 #+begin_src shell
 git clone --recurse-submodules git@github.com:zy9306/nix-home.git
@@ -100,7 +99,7 @@ git submodule update --init --recursive
 #+end_src
 
 
-* Install Nix
+* install nix
 
 #+begin_quote
 https://nixos.org/download.html#nix-quick-install
@@ -112,14 +111,14 @@ curl -L https://nixos.org/nix/install | sh
 #+end_src
 
 
-* Mirrors
+* mirrors
 
 #+begin_quote
 https://mirrors.tuna.tsinghua.edu.cn/help/nix/
 #+end_quote
 
 
-** 缓存镜像
+** cache mirror
 
 ~/.config/nix/nix.conf 中增加镜像源，substituters 中可能有多项，将清华
 的源放在第一个，如：
@@ -128,7 +127,7 @@ substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://c
 #+end_src
 
 
-** channel 镜像
+** channel mirror
 
 #+begin_src shell
 # 官方 channel：https://nixos.org/channels/nixpkgs-unstable
@@ -140,7 +139,7 @@ nix-channel --update
 #+end_src
 
 
-* Install Cachix
+* install cachix
 
 安装
 #+begin_src shell
@@ -153,7 +152,7 @@ cachix use arcueid
 #+end_src
 
 
-** 其它配置（只是使用可忽略该部分）
+** private config
 
 #+begin_quote
 https://app.cachix.org/cache/arcueid
@@ -181,7 +180,7 @@ https://docs.cachix.org/installation.html
 #+end_quote
 
 
-* Install Niv (Optional)
+* install niv (optional)
 
 Install
 #+begin_src shell
