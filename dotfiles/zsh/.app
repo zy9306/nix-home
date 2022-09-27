@@ -142,5 +142,8 @@ fi
 alias shfmt="shfmt -i 2"
 
 alias gc="git checkout"
+alias gb="git branch"
+alias gf="git fetch"
+alias gpom="git pull origin master"
 alias gcm="git checkout master"
 alias gcb="git checkout -b"
