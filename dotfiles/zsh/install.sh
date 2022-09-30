@@ -30,7 +30,8 @@ fi
 
 cd
 
-rm -f .zshrc .app .env .shutils .starship
+rm -f .zshenv .zshrc .app .env .shutils .starship
+ln -s ${CONFIG_PATH}/.zshenv .zshenv
 ln -s ${CONFIG_PATH}/.zshrc .zshrc
 ln -s ${CONFIG_PATH}/.env .env
 ln -s ${CONFIG_PATH}/.app .app

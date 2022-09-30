@@ -1,25 +1,3 @@
-# config LD_LIBRARY_PATH
-if [ -d /usr/local/lib ]; then
-  APPEND_LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib64"
-  if [[ $LD_LIBRARY_PATH != *"$APPEND_LD_LIBRARY_PATH"* ]]; then
-    if [ ! $LD_LIBRARY_PATH ]; then
-      export LD_LIBRARY_PATH=$APPEND_LD_LIBRARY_PATH
-    else
-      export LD_LIBRARY_PATH=$APPEND_LD_LIBRARY_PATH:$LD_LIBRARY_PATH
-    fi
-  fi
-fi
-
-# init nix env
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
-
-if [[ $(uname -s) == "Linux" ]]; then
-  SYS_PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/bin"
-  export PATH="$SYS_PATH:${PATH}"
-fi
-
-source $HOME/.shutils
-
 # common
 export TERM=xterm-256color
 
@@ -93,10 +71,9 @@ if zplug check b4b4r07/enhancd; then
 fi
 
 # 务必放在文件最后
-# 如果放在文件开头, .env 或 .app 如果有对内置命令的alias操作可能会导致某些问题
+# 如果放在文件开头, 如果有对内置命令的alias操作可能会导致某些问题
 # 目前已知放在文件开头会导致的问题: .app 中的 alias cat="bat -p" 会使 pure 不显示 git 版本控制
 # 因此等所有zsh配置都完成后再执行以下操作来避免相应问题
-source $HOME/.env
 source $HOME/.app
 
 if [[ "$HAS_STARSHIP" == true ]]; then
