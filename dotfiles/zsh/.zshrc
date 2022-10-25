@@ -83,5 +83,7 @@ else
   echo_red "!!! starship is not installed see: https://github.com/starship/starship"
 fi
 
+. $HOME/.zshenv
+
 # 使用 emacs 键绑定，必要加这句，否则一些快捷键会出问题
 bindkey -e
