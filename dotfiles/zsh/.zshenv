@@ -1,4 +1,7 @@
 # -*- mode: sh -*-
 
 source $HOME/.shutils
-source $HOME/.env
+
+if [[ $name != "nix-shell" ]]; then
+  source $HOME/.env
+fi
