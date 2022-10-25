@@ -1,4 +1,4 @@
-# nix-shell shell.nix
+# nix-shell --command "zsh" shell.nix
 
 let nixpkgs = import <nixpkgs> { };
 
