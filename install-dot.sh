@@ -5,7 +5,7 @@ ROOT=$PWD
 __dotfilesDir="dotfiles"
 __privateDir="private"
 
-for dir in {"alacritty","pip","yapf","proxychains-ng","prettier"}; do
+for dir in {"alacritty","pip","yapf","proxychains-ng","prettier","ssh"}; do
   cd $ROOT && cd $__dotfilesDir/$dir && ./install.sh
 done
 

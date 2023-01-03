@@ -1,0 +1,21 @@
+Host *
+    ControlMaster auto
+    ControlPersist 24h
+    ControlPath ~/.ssh/sockets/%r@%h:%p
+
+    GSSAPIAuthentication no
+    StrictHostKeyChecking no
+
+    TCPKeepAlive yes
+    ServerAliveInterval 15
+
+    CheckHostIP no
+
+    ForwardAgent yes
+
+    HashKnownHosts no
+    UserKnownHostsFile /dev/null
+
+Host *.illyasviel.xyz
+    User root
+    Port 22
