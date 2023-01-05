@@ -14,7 +14,6 @@ Host *
     ForwardAgent yes
 
     HashKnownHosts no
-    UserKnownHostsFile /dev/null
 
 Host *.illyasviel.xyz
     User root
