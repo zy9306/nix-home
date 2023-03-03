@@ -1,5 +1,5 @@
 # install this file:
-# nix-env -i -f default.nix
+# nix-env -i -f nixpkgs.nix
 
 # lock channel
 # nix-channel --add https://github.com/NixOS/nixpkgs/archive/78c4d33c16092e535bc4ba1284ba49e3e138483a.tar.gz pkgs

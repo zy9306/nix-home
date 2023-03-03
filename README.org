@@ -15,9 +15,7 @@
   - [[#channel-mirror][channel mirror]]
 - [[#install-cachix][install cachix]]
   - [[#private-config][private config]]
-- [[#install-niv-optional][install niv (optional)]]
 - [[#nix-shell][nix-shell]]
-- [[#nix-build][nix-build]]
 - [[#nix-env][nix-env]]
   - [[#install][install]]
   - [[#query][query]]
@@ -57,8 +55,8 @@ nix-env -e aria2
 
 nix-shell -p python37Full
 
-# update nix/sources.json
-niv update
+# 查询旧版本
+# https://lazamar.co.uk/nix-versions/
 
 # 锁定版本
 nix-env -qaP ".*emacs.*" -f https://github.com/NixOS/nixpkgs/archive/e85975942742a3728226ac22a3415f2355bfc897.tar.gz
@@ -180,28 +178,6 @@ https://docs.cachix.org/installation.html
 #+end_quote
 
 
-* install niv (optional)
-
-Install
-#+begin_src shell
-nix-env -iA nixpkgs.niv
-#+end_src
-
-Usage
-#+begin_src shell
-# niv add NixOS/nixpkgs -n {名称} -b {分支名}
-niv add NixOS/nixpkgs -n nixpkgs-unstable -b nixpkgs-unstable
-
-# niv add NixOS/nixpkgs -n {名称} -r {commitID}
-niv add NixOS/nixpkgs -n nixpkgs-528d35b -r 528d35bec0cb976a06cc0e8487c6e5136400b16b
-#+end_src
-
-Tips:
-
-要查找某些包的旧版本存在于哪个 commit 可以使用,但并不一定全
-https://lazamar.co.uk/nix-versions/
-
-
 * nix-shell
 
 可用于启用一个含指定 pkg 的 shell 环境或构造一个含相应编译依赖的环境。
@@ -229,18 +205,6 @@ nix-shell '<nixpkgs>' -p <pkg> --pure
 
 # 启动一个包含 alacritty 所需编译环境的 shell
 nix-shell -A alacritty '<nixpkgs>'
-#+end_src
-
-
-* nix-build
-
-#+begin_src shell
-# nix-build -A {attrPath} {paths}
-# attrPath 为 nix 文件中定义的属性名/包名 paths 为 nix 文件路径
-nix-build -A emacsGcc ./emacs/default.nix
-
-# 不加参数会构建所有属性
-nix-build --dry-run
 #+end_src
 
 
