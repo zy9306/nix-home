@@ -1,59 +1,38 @@
-let
-  sources = import nix/sources.nix;
-  emacs-overlay = sources."emacs-overlay";
-  pkgs = import sources."nixpkgs-unstable" {
-    overlays =
-      [ (import (builtins.fetchTarball { url = emacs-overlay.url; })) ];
-  };
-
-  latest = import <nixpkgs> { };
-in
-{
-  # ## nix
-  niv = pkgs.niv;  
-  # run nix-index, then nix-locate pattern will work.
-  nix-index = pkgs.nix-index;
-
-  starship = pkgs.starship;
-  ripgrep = pkgs.ripgrep;
-  fd = pkgs.fd;
-  fzf = pkgs.fzf;
-  unzip = pkgs.unzip;
-  htop = pkgs.htop;
-  xclip = pkgs.xclip;
-  gawk = pkgs.gawk;
-  universal-ctags = pkgs.universal-ctags;
-  cloc = pkgs.cloc;
-  pandoc = pkgs.pandoc;
-  bat = pkgs.bat;
-  exa = pkgs.exa;
-  navi = pkgs.navi;
-  tealdeer = pkgs.tealdeer;
-  git-lfs = pkgs.git-lfs;
-  delta = pkgs.gitAndTools.delta;
-  bfg-repo-cleaner = pkgs.bfg-repo-cleaner;
-  git-filter-repo = pkgs.gitAndTools.git-filter-repo;
-  curl = pkgs.curl;
-  wget = pkgs.wget;
-  aria2 = pkgs.aria2;
-  stern = pkgs.stern;
-
-  # ## format tool
-  shfmt = pkgs.shfmt;
-  nixfmt = pkgs.nixfmt;
-  nixpkgs-fmt = pkgs.nixpkgs-fmt;
-
-  # emacsGcc = pkgs.emacsGcc.overrideAttrs (old: {
-  #   configureFlags = old.configureFlags ++ [ "--program-transform-name='s/^ctags$/ctags.emacs/'" ];
-  # });
-
-  inherit pkgs latest;
-}
-
-# nix-env -iA nixpkgs.git
+# install this file:
 # nix-env -i -f default.nix
 
 # lock channel
-# nix-channel --add https://github.com/NixOS/nixpkgs/archive/30d3d79b7d3607d56546dd2a6b49e156ba0ec634.tar.gz pkgs
+# nix-channel --add https://github.com/NixOS/nixpkgs/archive/78c4d33c16092e535bc4ba1284ba49e3e138483a.tar.gz pkgs
 # nix-channel --update
 # nix-env -iA pkgs.nixpkgs-fmt
+
+let
+  nixpkgs = import <nixpkgs> { };
+in
+{
+  aria2 = nixpkgs.aria2;
+  bat = nixpkgs.bat;
+  cloc = nixpkgs.cloc;
+  curl = nixpkgs.curl;
+  delta = nixpkgs.gitAndTools.delta;
+  exa = nixpkgs.exa;
+  fd = nixpkgs.fd;
+  fzf = nixpkgs.fzf;
+  gawk = nixpkgs.gawk;
+  git-filter-repo = nixpkgs.gitAndTools.git-filter-repo;
+  git-lfs = nixpkgs.git-lfs;
+  htop = nixpkgs.htop;
+  navi = nixpkgs.navi;
+  nixfmt = nixpkgs.nixfmt;
+  nixpkgs-fmt = nixpkgs.nixpkgs-fmt;
+  pandoc = nixpkgs.pandoc;
+  ripgrep = nixpkgs.ripgrep;
+  shfmt = nixpkgs.shfmt;
+  starship = nixpkgs.starship;
+  stern = nixpkgs.stern;
+  tealdeer = nixpkgs.tealdeer;
+  universal-ctags = nixpkgs.universal-ctags;
+  unzip = nixpkgs.unzip;
+  wget = nixpkgs.wget;
+  xclip = nixpkgs.xclip;
+}
