@@ -19,6 +19,7 @@ in
   fd = nixpkgs.fd;
   fzf = nixpkgs.fzf;
   gawk = nixpkgs.gawk;
+  gh = nixpkgs.gh;
   git-filter-repo = nixpkgs.gitAndTools.git-filter-repo;
   git-lfs = nixpkgs.git-lfs;
   htop = nixpkgs.htop;
