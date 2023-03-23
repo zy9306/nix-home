@@ -1,29 +1,18 @@
+# -*- mode: Org; buffer-read-only: nil; org-download-image-dir: "img"-*-
+
+#+TITLE: nix
+#+DATE: 2023-02-07
+#+AUTHOR: zy
+
 #+OPTIONS: ^:{}
 #+OPTIONS: -:nil
-#+STARTUP: content
+#+OPTIONS: num:3
+#+STARTUP: showblocks
+#+STARTUP: 2level
+
+#+TOC: headlines 2
 
 [[https://github.com/zy9306/nix-home/workflows/Build/badge.svg?branch=master]]
-
-* table of contents                                               :TOC:QUOTE:
-#+BEGIN_QUOTE
-- [[#tldr][tldr]]
-- [[#issues][issues]]
-- [[#usage][usage]]
-- [[#install-nix][install nix]]
-- [[#mirrors][mirrors]]
-  - [[#cache-mirror][cache mirror]]
-  - [[#channel-mirror][channel mirror]]
-- [[#install-cachix][install cachix]]
-  - [[#private-config][private config]]
-- [[#nix-shell][nix-shell]]
-- [[#nix-env][nix-env]]
-  - [[#install][install]]
-  - [[#query][query]]
-  - [[#update][update]]
-  - [[#delete][delete]]
-  - [[#rollback][rollback]]
-  - [[#conflict][conflict]]
-#+END_QUOTE
 
 * tldr
 
@@ -63,118 +52,10 @@ nix-env -qaP ".*emacs.*" -f https://github.com/NixOS/nixpkgs/archive/e8597594274
 #+end_src
 
 
-* issues
-
-nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的问题
-
-以 libffi.so.6 为例，其它类似问题也可以同样处理，如果解决不了通过其它
-途径安装
-
-#+begin_src sh
-fd libffi.so /nix
-# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so
-# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7.1.0
-# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7
-sudo cp /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7.1.0 /usr/local/lib
-sudo ln -s /usr/local/lib/libffi.so.7.1.0 /usr/local/lib/libffi.so.6
-#+end_src
-
-
-* usage
-
-#+begin_src shell
-git clone --recurse-submodules git@github.com:zy9306/nix-home.git
-
-# or with version 1.9 of Git up until version 2.12
-git clone --recursive git://github.com/foo/bar.git
-
-# or
-git clone git@github.com:zy9306/nix-home.git
-cd private
-git submodule update --init --recursivegit clone git@github.com:zy9306/nix-home.git
-cd private
-git submodule update --init --recursive
-#+end_src
-
-
-* install nix
-
-#+begin_quote
-https://nixos.org/download.html#nix-quick-install
-#+end_quote
-
-#+begin_src shell
-# 注意：必须以非 `root` 用户安装注意：必须以非 `root` 用户安装
-curl -L https://nixos.org/nix/install | sh
-#+end_src
-
-
-* mirrors
-
-#+begin_quote
-https://mirrors.tuna.tsinghua.edu.cn/help/nix/
-#+end_quote
-
-
-** cache mirror
-
-~/.config/nix/nix.conf 中增加镜像源，substituters 中可能有多项，将清华
-的源放在第一个，如：
-#+begin_src 
-substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org https://arcueid.cachix.org
-#+end_src
-
-
-** channel mirror
-
-#+begin_src shell
-# 官方 channel：https://nixos.org/channels/nixpkgs-unstable
-# 删掉其它的，只保留清华的镜像即可
-nix-channel --list
-nix-channel --remove nixpkgs
-nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
-nix-channel --update
-#+end_src
-
-
-* install cachix
-
-安装
-#+begin_src shell
-nix-env -iA cachix -f https://cachix.org/api/v1/install
-#+end_src
-
-使用
-#+begin_src shell
-cachix use arcueid
-#+end_src
-
-
-** private config
+* cachix
 
 #+begin_quote
 https://app.cachix.org/cache/arcueid
-#+end_quote
-
-其中 arcueid 为创建 cache 时填写的名字
-
-配置和使用分别参考 ~Push binaries~ 和 ~Pull binaries~
-
-如果是私有仓库, 使用时需要 ~cachix authtoken {your authtoken}~
-
-Github CI 配置
-#+begin_quote
-https://nix.dev/tutorials/continuous-integration-github-actions.html
-#+end_quote
-
-其它 CI 配置
-#+begin_quote
-https://docs.cachix.org/continuous-integration-setup/index.html
-#+end_quote
-
-详细文档
-#+begin_quote
-https://docs.cachix.org/installation.html
 #+end_quote
 
 
@@ -284,3 +165,22 @@ nix-env -q
 # 设置优先级，priority 越小优先级越高
 nix-env --set-flag priority {priority} gcc
 #+end_src
+
+
+* issues
+
+nix 安装的包有时会出现工具链或动态库原因造成一些奇怪的问题
+
+以 libffi.so.6 为例，其它类似问题也可以同样处理，如果解决不了通过其它
+途径安装
+
+#+begin_src sh
+fd libffi.so /nix
+# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so
+# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7.1.0
+# /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7
+sudo cp /nix/store/q6ifii7y5cm5m593rf3bj29pb1qgrg7i-libffi-3.3/lib/libffi.so.7.1.0 /usr/local/lib
+sudo ln -s /usr/local/lib/libffi.so.7.1.0 /usr/local/lib/libffi.so.6
+#+end_src
+
+
