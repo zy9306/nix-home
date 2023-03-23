@@ -14,8 +14,6 @@ git clone --recurse-submodules git@github.com:zy9306/nix-home.git
 
 ./install_nixpkgs.sh
 
-./install_locked.sh
-
 ./install_macos_extra.sh
 
 # ./install_dotfiles.sh

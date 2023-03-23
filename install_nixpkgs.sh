@@ -2,4 +2,4 @@
 
 nix-env -i -f nixpkgs.nix
 
-./locked.sh
+./install_locked.sh
