@@ -38,4 +38,7 @@ ln -s ${CONFIG_PATH}/.shutils .shutils
 ln -s ${CONFIG_PATH}/.starship .starship
 chsh -s $(which zsh)
 
+# fix: zsh compinit: insecure directories and files, run compaudit for list.
+chown -R "$(whoami)" ~/.zplug
+
 echo_red "Done!"
