@@ -1,61 +1,36 @@
-# Font configuration
-# font:
-#   Default:
-#     - (macOS) Menlo
-#     - (Linux/BSD) Source Code Pro
-#     - (Windows) Consolas
-#   normal:
-#     family: Source Code Pro
-#     style: Regular
+font:
+  Default:
+    - (macOS) Source Code Pro
+    - (Linux/BSD) Source Code Pro
+    - (Windows) Source Code Pro
 
-#   bold:
-#     family: Source Code Pro
-#     style: Bold
+  size: 15.0
 
-#   italic:
-#     family: Source Code Pro
-#     style: Italic
+  offset:
+    x: 0
+    y: 0
 
-#   bold_italic:
-#     family: Source Code Pro
-#     style: Bold Italic
-
-#   size: 11.0
-
-#   offset:
-#    x: 0
-#    y: 0
-
-#   glyph_offset:
-#    x: 0
-#    y: 0
-
-#   # Thin stroke font rendering (macOS only)
-#   use_thin_strokes: true
+  glyph_offset:
+    x: 0
+    y: 0
 
 key_bindings:
   # Command -> Alt
-  - { key: F,           mods: Command,     chars: "\x1bf"                       }
-  - { key: B,           mods: Command,     chars: "\x1bb"                       }
-  - { key: D,           mods: Command,     chars: "\x1bd"                       }
+  - { key: F, mods: Command, chars: "\x1bf" }
+  - { key: B, mods: Command, chars: "\x1bb" }
+  - { key: D, mods: Command, chars: "\x1bd" }
 
-  - { key: K,           mods: Command,     chars: "\x1bk"                       }
-  - { key: J,           mods: Command,     chars: "\x1bj"                       }
+  - { key: K, mods: Command, chars: "\x1bk" }
+  - { key: J, mods: Command, chars: "\x1bj" }
 
-  # 有问题
-  - { key: H,           mods: Command,     chars: "\x1bh"                       }
+  - { key: Key1, mods: Command, chars: "\x1b1" }
+  - { key: Key2, mods: Command, chars: "\x1b2" }
+  - { key: Key3, mods: Command, chars: "\x1b3" }
+  - { key: Key4, mods: Command, chars: "\x1b4" }
+  - { key: Key5, mods: Command, chars: "\x1b5" }
 
-  - { key: L,           mods: Command,     chars: "\x1bl"                       }
+  - { key: Back, mods: Alt, chars: "\x1b\x7f" }
+  - { key: Back, mods: Command, chars: "\x1b\x7f" }
 
-  - { key: Key1,        mods: Command,     chars: "\x1b1"                       }
-  - { key: Key2,        mods: Command,     chars: "\x1b2"                       }
-  - { key: Key3,        mods: Command,     chars: "\x1b3"                       }
-  - { key: Key4,        mods: Command,     chars: "\x1b4"                       }
-  - { key: Key5,        mods: Command,     chars: "\x1b5"                       }
-
-  - { key: Back,        mods: Alt,         chars: "\x1b\x7f"                    }
-  - { key: Back,        mods: Command,     chars: "\x1b\x7f"                    }
-
-  # 修复mac中文输入法退格问题，linux 下测试正常
   # https://github.com/alacritty/alacritty/issues/1606
-  - { key: Back,        action:  ReceiveChar}
+  - { key: Back, action: ReceiveChar }
