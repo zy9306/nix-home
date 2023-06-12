@@ -34,3 +34,7 @@ key_bindings:
 
   # https://github.com/alacritty/alacritty/issues/1606
   - { key: Back, action: ReceiveChar }
+
+
+import:
+  - ~/.config/alacritty/themes/themes/ayu_light.yaml
