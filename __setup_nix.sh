@@ -2,10 +2,6 @@
 
 set -e
 
-install_nix() {
-  echo ">>> install nix ..."
-  curl -L https://nixos.org/nix/install | sh
-}
 
 update_nix_channel() {
   echo ">>> update nix channel ..."
@@ -22,9 +18,6 @@ install_cachix() {
 }
 
 case "$1" in
-"install_nix")
-  install_nix
-  ;;
 "update_nix_channel")
   update_nix_channel
   ;;

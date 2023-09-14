@@ -1,6 +1,7 @@
 git clone --recurse-submodules git@github.com:zy9306/nix-home.git
 
-./__setup_nix.sh install_nix
+# install
+# https://nixos.org/manual/nix/stable/installation/installation
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
