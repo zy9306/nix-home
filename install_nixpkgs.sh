@@ -2,4 +2,5 @@
 
 nix-env -i -f nixpkgs.nix
 
-./install_locked.sh
+### locked pkgs
+nix-env -iA bfg-repo-cleaner -f https://github.com/NixOS/nixpkgs/archive/30d3d79b7d3607d56546dd2a6b49e156ba0ec634.tar.gz

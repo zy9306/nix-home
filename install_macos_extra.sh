@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-install="nix-env -iA pkgs"
+install="nix-env -iA nixpkgs"
 
 # macOS bsd tools to gnu.
 case "$(uname -s)" in

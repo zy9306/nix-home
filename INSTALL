@@ -1,20 +1,26 @@
+### clone
 git clone --recurse-submodules git@github.com:zy9306/nix-home.git
 
-# install
+### INSTALL
+install
 # https://nixos.org/manual/nix/stable/installation/installation
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
-./__setup_nix.sh update_nix_channel
+### setup nix channel (Optional)
+nix-channel --list
+nix-channel --remove nixpkgs
+nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+nix-channel --update
 
-./__setup_nix.sh install_cachix
+### setup cachix (Optional)
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+cachix use arcueid
 
-# setup cache mirror
 # ~/.config/nix/nix.conf
 # substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org https://arcueid.cachix.org
 
+### INSTALL NIXPKGS
 ./install_nixpkgs.sh
 
 ./install_macos_extra.sh
-
-# ./install_dotfiles.sh
