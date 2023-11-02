@@ -1,0 +1,4 @@
+path_remove() {
+  # only work in zsh
+  path=("${(@)path:#"$1"}")
+}

@@ -29,12 +29,13 @@ fi
 
 cd
 
-rm -f .zshenv .zshrc .app .env .shutils .starship
+rm -f .zshenv .zshrc .app .env .shutils .starship .zshutils
 ln -s ${CONFIG_PATH}/.zshenv .zshenv
 ln -s ${CONFIG_PATH}/.zshrc .zshrc
 ln -s ${CONFIG_PATH}/.env .env
 ln -s ${CONFIG_PATH}/.app .app
 ln -s ${CONFIG_PATH}/.shutils .shutils
+ln -s ${CONFIG_PATH}/.zshutils .zshutils
 ln -s ${CONFIG_PATH}/.starship .starship
 chsh -s $(which zsh)
 
