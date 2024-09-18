@@ -1,8 +1,13 @@
 font:
-  Default:
-    - (macOS) Source Code Pro
-    - (Linux/BSD) Source Code Pro
-    - (Windows) Source Code Pro
+  normal:
+    family: SauceCodePro Nerd Font
+    style: Regular
+  bold:
+    family: SauceCodePro Nerd Font
+    style: Bold
+  italic:
+    family: SauceCodePro Nerd Font
+    style: Italic
 
   size: 15.0
 
