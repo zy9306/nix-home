@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-rm -f $HOME/.alacritty.yml
+rm -f $HOME/.alacritty.toml
 
-ln -s $PWD/.alacritty.yml $HOME/.alacritty.yml
+ln -s $PWD/.alacritty.toml $HOME/.alacritty.toml
