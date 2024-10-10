@@ -14,7 +14,8 @@
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true
+	; TODO 会出现 `Pattern not found  (press RETURN)`
+    ; navigate = true
     features = line-numbers decorations
     whitespace-error-style = 22 reverse
 
@@ -24,8 +25,9 @@
 [diff]
     colorMoved = default
 
-[delta "decorations"]
-    commit-decoration-style = yellow ul ol
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = cyan ul
+; 用默认样式
+; [delta "decorations"]
+;     commit-decoration-style = yellow ul ol
+;     file-style = bold yellow ul
+;     file-decoration-style = none
+;     hunk-header-decoration-style = cyan ul
