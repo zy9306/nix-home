@@ -22,18 +22,18 @@ end)
 
 config.keys = {
     -- workspace
-    -- {
-    --     key = "9",
-    --     mods = "ALT",
-    --     action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-    -- },
-    -- {
-    --     key = "9",
-    --     mods = "CMD",
-    --     action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-    -- },
-    -- { key = ")", mods = "LEADER", action = act.SwitchWorkspaceRelative(1) },
-    -- { key = "(", mods = "LEADER", action = act.SwitchWorkspaceRelative(-1) },
+    {
+        key = "9",
+        mods = "ALT",
+        action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+    },
+    {
+        key = "9",
+        mods = "CMD",
+        action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+    },
+    { key = ")", mods = "LEADER", action = act.SwitchWorkspaceRelative(1) },
+    { key = "(", mods = "LEADER", action = act.SwitchWorkspaceRelative(-1) },
 
     -- https://github.com/wez/wezterm/issues/522
     {
