@@ -2,6 +2,37 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
+wezterm.on("gui-startup", function(cmd)
+    local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+
+    local tab_name_to_tab = {}
+
+    local function spawn_tab(tab_name)
+        local tab, _, _ = window:spawn_tab({})
+        tab:set_title(tab_name)
+        tab_name_to_tab[tab_name] = tab
+    end
+
+    spawn_tab("sh")
+    spawn_tab("nvim")
+    spawn_tab("k8s")
+
+    for _, tab_name in ipairs({
+        "wordsapp",
+        "wordsutils",
+        "wordslearning",
+        "abc-go",
+        "wordscollection",
+        "protos",
+        "campaign",
+        "deskmate",
+    }) do
+        spawn_tab(tab_name)
+    end
+
+    tab_name_to_tab["sh"]:activate()
+end)
+
 -- config.color_scheme = "catppuccin-latte"
 config.color_scheme = "catppuccin-mocha"
 
@@ -14,26 +45,40 @@ config.window_frame = {
 
 config.enable_tab_bar = true
 
-config.leader = { key = "x", mods = "CTRL", timeout_milliseconds = 15000 }
+-- only for nightly
+config.show_close_tab_button_in_tabs = false
 
-wezterm.on("update-right-status", function(window, pane)
-    window:set_right_status(window:active_workspace())
-end)
+config.mouse_bindings = {
+    {
+        event = { Down = { streak = 1, button = "Middle" } },
+        mods = "NONE",
+        action = wezterm.action.Nop,
+    },
+}
+config.mouse_bindings = {
+    {
+        event = { Up = { streak = 1, button = "Middle" } },
+        mods = "NONE",
+        action = wezterm.action.Nop,
+    },
+}
+
+config.leader = { key = "x", mods = "CTRL", timeout_milliseconds = 15000 }
 
 config.keys = {
     -- workspace
-    -- {
-    --     key = "9",
-    --     mods = "ALT",
-    --     action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-    -- },
-    -- {
-    --     key = "9",
-    --     mods = "CMD",
-    --     action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-    -- },
-    -- { key = ")", mods = "LEADER", action = act.SwitchWorkspaceRelative(1) },
-    -- { key = "(", mods = "LEADER", action = act.SwitchWorkspaceRelative(-1) },
+    {
+        key = "9",
+        mods = "ALT",
+        action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+    },
+    {
+        key = "9",
+        mods = "CMD",
+        action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+    },
+    { key = ")", mods = "LEADER", action = act.SwitchWorkspaceRelative(1) },
+    { key = "(", mods = "LEADER", action = act.SwitchWorkspaceRelative(-1) },
 
     -- https://github.com/wez/wezterm/issues/522
     {
@@ -134,6 +179,14 @@ config.keys = {
 
     { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
     { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
+
+    {
+        key = "!",
+        mods = "LEADER | SHIFT",
+        action = wezterm.action_callback(function(win, pane)
+            local tab, window = pane:move_to_new_window()
+        end),
+    },
 }
 
 for i = 1, 9 do
