@@ -14,6 +14,7 @@ wezterm.on("gui-startup", function(cmd)
     end
 
     spawn_tab("sh")
+    spawn_tab("proxy")
     spawn_tab("nvim")
     spawn_tab("k8s")
 
@@ -23,9 +24,12 @@ wezterm.on("gui-startup", function(cmd)
         "wordslearning",
         "abc-go",
         "wordscollection",
+        "svip-go",
         "protos",
         "campaign",
         "deskmate",
+        "vocabtest",
+        "abtest",
     }) do
         spawn_tab(tab_name)
     end
@@ -196,5 +200,19 @@ for i = 1, 9 do
         action = act.ActivateTab(i - 1),
     })
 end
+
+wezterm.on("toggle-tabbar", function(window, _)
+    local overrides = window:get_config_overrides() or {}
+    if overrides.enable_tab_bar == false then
+        wezterm.log_info("tab bar shown")
+        overrides.enable_tab_bar = true
+    else
+        wezterm.log_info("tab bar hidden")
+        overrides.enable_tab_bar = false
+    end
+    window:set_config_overrides(overrides)
+end)
+
+table.insert(config.keys, { key = "T", mods = "CTRL", action = act.EmitEvent("toggle-tabbar") })
 
 return config
