@@ -2,7 +2,7 @@
 
 # bat config
 if [[ $(command_exists bat) == true ]]; then
-  export BAT_THEME="GitHub" # use GitHub for white theme, zenburn for black theme.
+  export BAT_THEME="1337" # use GitHub for white theme, zenburn for black theme.
   alias cat="bat -p --wrap character"
 else
   echo_red "bat is not installed, see: https://github.com/sharkdp/bat"
@@ -147,3 +147,6 @@ alias gf="git fetch"
 alias gpom="git pull origin master"
 alias gcm="git checkout master"
 alias gcb="git checkout -b"
+
+alias vim="nvim"
+alias vi="nvim"
