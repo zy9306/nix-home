@@ -29,10 +29,11 @@ fi
 
 cd
 
-rm -f .zshenv .zshrc .app .env .shutils .starship .zshutils
+rm -f .zshenv .zshrc .app .env.sh .shutils .starship .zshutils
 ln -s ${CONFIG_PATH}/.zshenv .zshenv
 ln -s ${CONFIG_PATH}/.zshrc .zshrc
-ln -s ${CONFIG_PATH}/.env .env
+# fix aider config file conflict
+ln -s ${CONFIG_PATH}/.env .env.sh
 ln -s ${CONFIG_PATH}/.app .app
 ln -s ${CONFIG_PATH}/.shutils .shutils
 ln -s ${CONFIG_PATH}/.zshutils .zshutils
