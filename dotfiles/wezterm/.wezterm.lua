@@ -142,26 +142,26 @@ config.keys = {
         mods = "LEADER",
         action = wezterm.action.CloseCurrentPane({ confirm = false }),
     },
-    {
-        key = "h",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Left"),
-    },
-    {
-        key = "l",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Right"),
-    },
-    {
-        key = "k",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Up"),
-    },
-    {
-        key = "j",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Down"),
-    },
+    -- {
+    --     key = "h",
+    --     mods = "LEADER",
+    --     action = act.ActivatePaneDirection("Left"),
+    -- },
+    -- {
+    --     key = "l",
+    --     mods = "LEADER",
+    --     action = act.ActivatePaneDirection("Right"),
+    -- },
+    -- {
+    --     key = "k",
+    --     mods = "LEADER",
+    --     action = act.ActivatePaneDirection("Up"),
+    -- },
+    -- {
+    --     key = "j",
+    --     mods = "LEADER",
+    --     action = act.ActivatePaneDirection("Down"),
+    -- },
     {
         key = "z",
         mods = "LEADER",
@@ -214,5 +214,16 @@ wezterm.on("toggle-tabbar", function(window, _)
 end)
 
 table.insert(config.keys, { key = "T", mods = "CTRL", action = act.EmitEvent("toggle-tabbar") })
+
+-- smart-splits
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+smart_splits.apply_to_config(config, {
+    direction_keys = {
+        move = { "H", "J", "K", "L" },
+        resize = { "h", "j", "k", "l" },
+    },
+    modifiers = { move = "CTRL", resize = "META" },
+    log_level = "info",
+})
 
 return config
